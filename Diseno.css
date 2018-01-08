@@ -27,6 +27,7 @@ input[type="submit"] { cursor: pointer; }
 #Sesion {
     margin: 50px auto;
     width: 300px;
+    visibility: hidden; 
 }
 
 #Sesion h1 {
