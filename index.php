@@ -8,7 +8,7 @@
 	function Inicio(showhide){
 	if(showhide == "show"){
     document.getElementById('Sesion').style.visibility="visible";
-    
+
     document.getElementById('Sesion').style.visibility="visible";
 	}else if(showhide == "hide"){
     document.getElementById('Sesion').style.visibility="hidden"; 
@@ -30,10 +30,9 @@
 
 	            <form action="javascript:void(0);" method="get">
 
-	                <input type="email" value="Correo" onBlur="if(this.value=='')this.value='Correo'" onFocus="if(this.value=='Correo')this.value='' "> <!-- JS because of IE support; better: placeholder="Email" -->
+	                <input type="email" value="Correo" onBlur="if(this.value=='')this.value='Correo'" onFocus="if(this.value=='Correo')this.value='' "> 
 
-	                <input type="password" value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "> <!-- JS because of IE support; better: placeholder="Password" -->
-
+	                <input type="password" value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "> 
 	                <input type="submit" value="Aceptar">
 	            </form>
 	            	<input type="submit" value="Cerrar" onclick="Inicio('hide');">
