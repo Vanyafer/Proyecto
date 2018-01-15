@@ -72,34 +72,35 @@ input[type="submit"] { cursor: pointer; }
 
 /*------------- REGISTRO----------------*/
 #titulo{
-    background-color: #219ac6;
-    border-radius: 5px 5px 0 0;
-    color: #fff;
-    font-size: 30px;
-    padding: 20px;
-    text-align: center;
-    text-transform: uppercase;
+    color: black;
+    font-size: 40px;
 }
 #Datos{
     margin: 50px auto;
-    width: 70%;
+    width: 80%;
     background-color: #bfe7ff;
     border-radius: 10px 10px 10px 10px;
+    padding-left: 20px;
 }
 #Datos p{
     font-size: 18px;
     font-family: 
 }
-#columna {
+#Columna {
     float: left;
     width: 45%;
     padding: 15px;
 }
 
-#fila:after {
+#Fila:after {
     content: "";
     display: table;
     clear: both;
+}
+#Columna2 {
+    float: left;
+    width: 40%;
+    padding: 15px;
 }
 
 @media (max-width:600px) {

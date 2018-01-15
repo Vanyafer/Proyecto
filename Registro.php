@@ -6,39 +6,82 @@
 </head>
 <body>
 <h1 id="titulo">Registrarse</h1>
+<hr style="color: #1c83a8;">
 <div id="Datos">
 	<form action="javascript:void(0);" method="get">
-		<div id="fila">
-			<div id="columna">
+		<div id="Fila">
+			<div id="Columna">
 					<p>Nombre de usuario:</p>
-					<input type="text" name="Usuario" value="Usuario">
+					<input type="text" name="Usuario" value="Usuario" onBlur="if(this.value=='')this.value='Usuario'" onFocus="if(this.value=='Usuario')this.value='' ">
 					<br>
 					<p>Correo:</p>
 	                <input type="email" value="Correo" onBlur="if(this.value=='')this.value='Correo'" onFocus="if(this.value=='Correo')this.value='' "> 
 	                <br>
 	                <p>Contrasena:</p>
-	                <input type="password" value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' ">
+	                <input type="password" value="Contrasena" onBlur="if(this.value=='')this.value='Contrasena'" onFocus="if(this.value=='Contrasena')this.value='' ">
 	                <br>
-	                <p>Repita contrasena:</p>
-	                <input type="password" value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' ">
+	                <p>Confirme contrasena:</p>
+	                <input type="password" value="Contrasena" onBlur="if(this.value=='')this.value='Contrasena'" onFocus="if(this.value=='Contrasena')this.value='' ">
 	                <br>
 			</div>
-			<div id="columna">
+			<div id="Columna">
 					<p>Pais:</p>
 					<input type="text" name="Pais" value="Pais">
 					<br>
-					<p>Edad:</p>
-					<input type="text" name="Edad" value="Edad">
+					<p>Fecha de nacimiento:</p>
+					<input type="date" name="Edad" value="Edad">
 					<br>
 					<p>Tipo de usuario:</p>
 					<p><input type="radio" name="TipoU"> Artista </p>
-					<p><input type="radio" name="TipoU"> Invitado </p>
+					<p><input type="radio" name="TipoU"> Fan </p>
 			</div>
 		</div>
-					
+		<hr>
+		<div id="Art">
+		<div id="Fila">
+			<div id="Columna">
+				<p>Tecnica de interes:</p>
+				<input type="text" name="Tecnica">
+				<p>Metas:</p>
+				<input type="text" name="Metas">
+				<p>Estudios:</p>
+				<input type="text" name="Estudios">
+				<p>Tiempo como Artista:</p>
+				<input type="text" name="Exper">
+				<p>Algo mas para compartir:</p>
+				<input type="text" name="Otro">
+			</div>
+			<div id="Columna">
+				<p>Foto de perfil:</p>
+				<input type="file" name="perfil">
+				<h3>Paleta de colores:</h5>
+				<p><input type="radio" name="TipoP"> Blanco/Negro <br>
+				<input type="radio" name="TipoP"> Frio <br>
+				<input type="radio" name="TipoP"> Calido <br>
+				<input type="radio" name="TipoP"> Personalizado </p>
+				<div id="Fila">
+					<div id="Columna2">
+						<p>Color de Bordes:</p>
+						<input type="color" name="Bordes">
+						<p>Color Texto:</p>
+						<input type="color" name="Titulos">
+					</div>
+					<div id="Columna2">
+						<p>Color de Fondo:</p>
+						<input type="color" name="Fondos">
+						<p>Color de botones:</p>
+						<input type="color" name="Botones">
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	
+	</div>			
 	</form>
 	
 </div>
+
 <input type="submit" value="Aceptar">
 </body>
 </html>
