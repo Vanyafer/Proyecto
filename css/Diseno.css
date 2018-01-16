@@ -78,7 +78,7 @@ input[type="submit"] { cursor: pointer; }
 #Datos{
     margin: 50px auto;
     width: 80%;
-    background-color: black;//#bfe7ff
+    background-color: #bfe7ff;
     border-radius: 10px 10px 10px 10px;
     padding-left: 20px;
 }
@@ -108,9 +108,5 @@ input[type="submit"] { cursor: pointer; }
         width: 100%;
     }
 }
-#Artista{
-   padding-left: 50px;
-    visibility: hidden;
-    background-color: black;
-}
+
 

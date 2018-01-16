@@ -2,13 +2,11 @@
 <html>
 <head>
 	<title>Nombre de nuestra pagina</title>
-	<link rel="stylesheet" type="text/css" href="Diseno.css">
+	<link rel="stylesheet" type="text/css" href="css/Diseno.css">
 	<script type="text/javascript">
 
 	function Inicio(showhide){
 	if(showhide == "show"){
-    document.getElementById('Sesion').style.visibility="visible";
-
     document.getElementById('Sesion').style.visibility="visible";
 	}else if(showhide == "hide"){
     document.getElementById('Sesion').style.visibility="hidden"; 
