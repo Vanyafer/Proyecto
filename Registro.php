@@ -37,22 +37,29 @@
 					<p><input type="radio" name="TipoU" value="F"> Fan </p>
 			</div>
 		</div>
-		<hr>
-		
-	</div>		
-	<div id="Artista">
+		<br>
+		<div id="Artista">
 			<div id="Fila">
 				<div id="Columna">
-					<p>Tecnica de interes:</p>
-					<input type="text" name="Tecnica">
-					<p>Metas:</p>
-					<input type="text" name="Metas">
-					<p>Estudios:</p>
-					<input type="text" name="Estudios">
-					<p>Tiempo como Artista:</p>
-					<input type="text" name="Exper">
-					<p>Algo mas para compartir:</p>
-					<input type="text" name="Otro">
+					<p>
+						Tecnica de interes:<br>
+						<textarea name="Tecnica"></textarea>
+					</p>
+					<p>
+						Metas:<br>
+						<textarea name="Metas"></textarea>
+					</p>
+					<p>
+						Estudios:<br>
+						<textarea name="Estudios"></textarea>
+					</p>
+						<p>Tiempo como Artista:<br>
+						<textarea name="Exper"></textarea>
+					</p>
+					<p>
+						Algo mas para compartir:<br>
+						<input type="text" name="otro">
+					</p>
 				</div>
 				<div id="Columna">
 					<p>Foto de perfil:</p>
@@ -79,16 +86,35 @@
 				</div>
 			</div>
 		</div>
-
+	<div id="Fan">
+				<p>Informacion de contacto</p>
+				<textarea name="DatosFan">
+					
+				</textarea>
+				<p>Perfil:</p>
+				<textarea name="PerfilFan">
+					
+				</textarea>
+				<p>Foto de perfil:</p>
+				<input type="file" name="perfil">
+				<br>
+			</div>
+	</div>		
+	
 <script type="text/javascript">
 	$(document).ready(function(){
 		
 		$("input:radio[name=TipoU]").click(function () {	 
-			alert($('input:radio[name=TipoU]:checked').val());
-			
+			if($('input:radio[name=TipoU]:checked').val() == 'A'){
+				document.getElementById('Artista').style.visibility="visible";
+				document.getElementById('Fan').style.visibility="hidden";
+			}
+			else{
+				document.getElementById('Artista').style.visibility="hidden";
+				document.getElementById('Fan').style.visibility="visible";
+			}
 		});
 	});
 </script>
-<input type="submit" value="Aceptar">
 </body>
 </html>

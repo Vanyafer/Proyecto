@@ -80,7 +80,7 @@ input[type="submit"] { cursor: pointer; }
     width: 80%;
     background-color: #bfe7ff;
     border-radius: 10px 10px 10px 10px;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 #Datos p{
     font-size: 18px;
@@ -108,5 +108,37 @@ input[type="submit"] { cursor: pointer; }
         width: 100%;
     }
 }
+#Artista{
+    visibility: hidden;
+    width: 80%;
+    margin-top: 10px;
+    background-color: #bfe7ff;
+    border-radius: 10px 10px 10px 10px;
+    padding-left: 20px;
+    position: absolute;
 
+    padding-bottom: 20px;
+}
+#Artista textarea{
+    width: 90%;
+    height: 40px;
+}
+#Artita input[type="text"]{
+width: 90%;
+    height: 40px;
+}
+#Fan{
+    visibility: hidden;
+    width: 80%;
+    margin-top: 10px;
+    background-color: #bfe7ff;
+    border-radius: 10px 10px 10px 10px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    position: absolute;
+}
 
+#Fan textarea{
+    width: 90%;
+    height: 50px;
+}
