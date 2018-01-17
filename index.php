@@ -38,3 +38,6 @@
 	</div>
 </body>
 </html>
+<?php
+include("conexion.php")
+?>

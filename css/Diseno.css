@@ -80,7 +80,7 @@ input[type="submit"] { cursor: pointer; }
     width: 80%;
     background-color: #bfe7ff;
     border-radius: 10px 10px 10px 10px;
-    padding-left: 10px;
+    padding-left: 30px;
 }
 #Datos p{
     font-size: 18px;
@@ -122,10 +122,7 @@ input[type="submit"] { cursor: pointer; }
 #Artista textarea{
     width: 90%;
     height: 40px;
-}
-#Artita input[type="text"]{
-width: 90%;
-    height: 40px;
+    resize: none;
 }
 #Fan{
     visibility: hidden;
@@ -141,4 +138,5 @@ width: 90%;
 #Fan textarea{
     width: 90%;
     height: 50px;
+    resize: none;
 }

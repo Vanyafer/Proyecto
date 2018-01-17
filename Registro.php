@@ -58,7 +58,7 @@
 					</p>
 					<p>
 						Algo mas para compartir:<br>
-						<input type="text" name="otro">
+						<textarea name="Otro"></textarea>
 					</p>
 				</div>
 				<div id="Columna">
