@@ -1,0 +1,78 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+a{
+	text-decoration: none;
+}
+.Reto{
+	margin: 50px auto;
+    width: 80%;
+    background-color: #bfe7ff;
+    border-radius: 10px;
+    padding: 20px 40px 20px 40px;
+}
+.Fila{
+	display: block;
+	position: relative;
+	margin: 5px;
+}
+.Subir{
+	display: inline-block;
+	
+	padding: 15px 40px 15px 40px;
+	line-height: 30px;
+	background-color: #ccc;
+	text-align: center;
+	border-radius: 10px;
+	position:relative;
+	float: right;
+}
+.Descripcion{
+	display: inline-block;
+	width: 75%;
+}
+.Subir:Hover{
+	background-color: #fff;
+	cursor: pointer;
+}
+.Apoyo{
+	display: inline-block;
+	padding: 10px 20px 10px 20px;
+	line-height: 20px;
+	background-color: #ccc;
+	text-align: center;
+	border-radius: 5px;
+	position:relative;
+}
+.Dias{
+	display: inline-block;
+	width: 50%;
+
+}
+.Apoyo:Hover{
+	background-color: #fff;
+	cursor: pointer;
+}
+h1{
+	font-size: 50px;
+}
+.Retos{
+	margin: 20px auto;
+    width: 85%;
+    border: 2px solid #ccc;
+}
+.Retos p{
+	background-color: #bfe7ff;
+}
+.ListaR{
+	height: 50px;
+	overflow: auto;
+}
+.Sub{
+	display: block;
+	width: 100%;
+	font-size: 35px;
+	text-align: center;
+}

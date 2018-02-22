@@ -13,7 +13,7 @@
 		<div class="Foto derecha">Hola</div>
 	</div>
 	<div class="Datos">
-		<div class="todo">
+		<div>
 			<div class="Nombre">Nombre</div>
 			<div class="Opciones">
 					<a href="">Seguir</a>
