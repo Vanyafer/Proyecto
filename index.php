@@ -15,10 +15,10 @@
 </script>
 </head>
 <body>
-	<div id="Barra">
+	<nav id="Barra">
 		<a href="javascript:Inicio('show');" id="Inicio">Iniciar Sesion</a>
 	    <a href="Registro.php">Registro</a>
-	</div>
+	</nav>
 
 	<div id="Sesion">
 

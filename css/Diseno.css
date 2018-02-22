@@ -9,7 +9,7 @@
 
 }
 #Barra a {
-     display: inline;
+    display: inline;
     color: white;
     text-align: center;
     padding: 14px 16px;
@@ -80,16 +80,46 @@ input[type="submit"] { cursor: pointer; }
     width: 80%;
     background-color: #bfe7ff;
     border-radius: 10px 10px 10px 10px;
-    padding-left: 30px;
+    
+}
+#Datos input,
+#Datos select{
+
+    border-radius: 5px;
+
+    border: 1px solid #dcdcdc;
+    padding: 12px 10px;
+}
+#Datos input[type="email"],
+#Datos input[type="password"],
+#Datos input[type="text"]
+{
+    width: 80%;
+}
+
+#Datos textarea{
+    border: 1px solid #dcdcdc;
+    padding: 12px 10px;
+    border-radius: 5px;
 }
 #Datos p{
     font-size: 18px;
     font-family: 
 }
+#Datos input[type="submit"] {
+    background: #219ac6;
+    border-radius: 3px;
+    color: #fff;
+    float: right;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 12px 20px;
+}
 #Columna {
     float: left;
     width: 45%;
-    padding: 15px;
+    padding-left: 15px;
 }
 
 #Fila:after {
@@ -99,13 +129,17 @@ input[type="submit"] { cursor: pointer; }
 }
 #Columna2 {
     float: left;
-    width: 40%;
-    padding: 15px;
+    width: 42%;
+    padding-left: 15px;
 }
 
 @media (max-width:600px) {
     .column {
         width: 100%;
+    }
+    #Datos{
+        padding-left: 0;
+        margin: 5px auto;
     }
 }
 #Artista{
@@ -124,6 +158,10 @@ input[type="submit"] { cursor: pointer; }
     height: 40px;
     resize: none;
 }
+#Artista img{
+    width: 30%;
+}
+
 #Fan{
     visibility: hidden;
     width: 80%;
@@ -139,4 +177,7 @@ input[type="submit"] { cursor: pointer; }
     width: 90%;
     height: 50px;
     resize: none;
+}
+.jscolor{
+    width: 80%;
 }

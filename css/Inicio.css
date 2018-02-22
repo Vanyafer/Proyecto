@@ -1,0 +1,47 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+	
+}
+a{
+	text-decoration: none;
+}
+.Lateral{
+	margin: 5px;
+	width: 20%;
+	height: 500px;
+	background-color: #22AEE1;
+	border-radius: 5px;
+	float: right;
+	padding: 5px;
+}
+.Publicar{
+	margin: 15px auto;
+	position: relative;
+	width: 80%;
+	height: 50px;
+	background-color: #B8F4FF;
+	line-height: 50px;
+	text-align: center;
+	display: block;
+	border-radius: 5px;
+	}
+.Publicar a{
+	color: #219ac6;
+}
+.Publicar:hover {
+	background-color: #6CE8FF;
+	
+	cursor: pointer;
+
+}
+.Publicar:hover a{
+	color: white;
+}
+.Publicar a:focus{
+	color: #6CE8FF;
+
+}
