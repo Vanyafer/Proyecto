@@ -69,15 +69,7 @@
 							<p>Pais:</p>
 							<select name="Pais">
 		       					
-		          							<?php
-		          							include ("Conexion.php");
-												$consulta = mysqli_query($conexion,"SELECT * FROM Pais");
-		          							while ($valores = mysqli_fetch_array($consulta)) {
-														
-		           							echo "<option value=".$valores['Id_Pais'].">".$valores['Nombre_Pais']."</option>";
-															
-		          								}
-		        							?>
+		          							
 
 			
 									</select>

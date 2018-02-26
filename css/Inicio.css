@@ -10,7 +10,7 @@ a{
 	margin: 5px;
 	width: 20%;
 	height: 500px;
-	background-color: #22AEE1;
+	background-color: #bfe7ff;
 	border-radius: 5px;
 	float: right;
 	padding: 5px;
@@ -40,5 +40,9 @@ a{
 }
 .Publicar a:focus{
 	color: #6CE8FF;
+
+}
+.Recomendados{
+	height: 150px;
 
 }

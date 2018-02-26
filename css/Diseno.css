@@ -80,7 +80,6 @@ input[type="submit"] { cursor: pointer; }
     width: 80%;
     background-color: #bfe7ff;
     border-radius: 10px 10px 10px 10px;
-    
 }
 #Datos input,
 #Datos select{

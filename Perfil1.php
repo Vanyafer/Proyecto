@@ -18,7 +18,7 @@
 			<div class="Opciones">
 					<a href="">Seguir</a>
 					<a href="">Amigos</a>
-					<a href="">Enviar mensaje</a>
+					<a href="Mensajes.php">Enviar mensaje</a>
 				
 			</div>
 		</div>
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 </div>
-<div class="Portafolio"><a href="">Portafolio</a></div>
+<div class="Portafolio"><a href="Portafolio.php">Portafolio</a></div>
 
 </body>
 </html>
