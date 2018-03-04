@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-02-2018 a las 07:25:33
+-- Tiempo de generación: 04-03-2018 a las 17:50:44
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -211,8 +211,7 @@ CREATE TABLE `imagen_reto` (
   `id_imagenreto` int(11) NOT NULL,
   `imagen` varchar(200) DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
-  `id_artista` int(11) DEFAULT NULL,
-  `id_reto` int(11) DEFAULT NULL
+  `id_aceptado` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -477,8 +476,7 @@ ALTER TABLE `imagen_coleccion`
 --
 ALTER TABLE `imagen_reto`
   ADD PRIMARY KEY (`id_imagenreto`),
-  ADD KEY `id_artista` (`id_artista`),
-  ADD KEY `id_reto` (`id_reto`);
+  ADD KEY `id_aceptado` (`id_aceptado`);
 
 --
 -- Indices de la tabla `mensaje`
@@ -814,8 +812,7 @@ ALTER TABLE `imagen_coleccion`
 -- Filtros para la tabla `imagen_reto`
 --
 ALTER TABLE `imagen_reto`
-  ADD CONSTRAINT `imagen_reto_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artista` (`id_artista`),
-  ADD CONSTRAINT `imagen_reto_ibfk_2` FOREIGN KEY (`id_reto`) REFERENCES `retos` (`id_reto`);
+  ADD CONSTRAINT `imagen_reto_ibfk_1` FOREIGN KEY (`id_aceptado`) REFERENCES `retos_aceptados` (`id_aceptado`);
 
 --
 -- Filtros para la tabla `mensaje`
