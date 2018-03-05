@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2018 a las 17:50:44
+-- Tiempo de generación: 05-03-2018 a las 07:52:51
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -189,6 +189,14 @@ CREATE TABLE `foro_tipo` (
   `tipo` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `foro_tipo`
+--
+
+INSERT INTO `foro_tipo` (`id_tipo`, `tipo`) VALUES
+(1, 'Ideas'),
+(2, 'Objetos');
+
 -- --------------------------------------------------------
 
 --
@@ -251,6 +259,33 @@ CREATE TABLE `pais` (
   `id_pais` int(11) NOT NULL,
   `nombre_pais` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `pais`
+--
+
+INSERT INTO `pais` (`id_pais`, `nombre_pais`) VALUES
+(1, 'Mexico'),
+(2, 'Costa Rica'),
+(3, 'El Salvador'),
+(4, 'Guatemala'),
+(5, 'Honduras'),
+(6, 'Nicaragua'),
+(7, 'Panamá'),
+(8, 'Cuba'),
+(9, 'Puerto Rico'),
+(10, 'República Dominicana'),
+(11, 'Argentina'),
+(12, 'Bolivia'),
+(13, 'Chile'),
+(14, 'Colombia'),
+(15, 'Ecuador'),
+(16, 'Paraguay'),
+(17, 'Perú'),
+(18, 'Uruguay'),
+(19, 'Venezuela'),
+(20, 'España'),
+(21, 'Estados Unidos de America');
 
 -- --------------------------------------------------------
 
@@ -341,6 +376,15 @@ CREATE TABLE `tipo_perfil` (
   `tipo_perfil` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `tipo_perfil`
+--
+
+INSERT INTO `tipo_perfil` (`id_tipoperfil`, `tipo_perfil`) VALUES
+(1, 'Una columna'),
+(2, 'Dos columnas'),
+(3, 'Tres columnas');
+
 -- --------------------------------------------------------
 
 --
@@ -351,6 +395,14 @@ CREATE TABLE `tipo_usuario` (
   `id_tipousuario` int(11) NOT NULL,
   `nombre_tipousuario` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`id_tipousuario`, `nombre_tipousuario`) VALUES
+(1, 'Artista'),
+(2, 'Fan');
 
 -- --------------------------------------------------------
 
@@ -634,7 +686,7 @@ ALTER TABLE `foro_respuesta`
 -- AUTO_INCREMENT de la tabla `foro_tipo`
 --
 ALTER TABLE `foro_tipo`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen_coleccion`
@@ -664,7 +716,7 @@ ALTER TABLE `me_gusta`
 -- AUTO_INCREMENT de la tabla `pais`
 --
 ALTER TABLE `pais`
-  MODIFY `id_pais` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `perfil`
@@ -706,13 +758,13 @@ ALTER TABLE `seguidores`
 -- AUTO_INCREMENT de la tabla `tipo_perfil`
 --
 ALTER TABLE `tipo_perfil`
-  MODIFY `id_tipoperfil` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipoperfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `id_tipousuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipousuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
