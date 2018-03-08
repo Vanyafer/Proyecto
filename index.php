@@ -26,11 +26,11 @@
 
 	        <fieldset>
 
-	            <form action="javascript:void(0);" method="get">
+	            <form action="index.php" method="POST">
 
-	                <input type="email" value="Correo" onBlur="if(this.value=='')this.value='Correo'" onFocus="if(this.value=='Correo')this.value='' "> 
-
-	                <input type="password" value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "> 
+	                <input type="email" name="Correo" value="Correo" onBlur="if(this.value=='')this.value='Correo'" onFocus="if(this.value=='Correo')this.value='' "> 
+	                <!--input type="Text" name="Usuario" value="Usuario" onBlur="if(this.value=='')this.value='Usuario'" onFocus="if(this.value=='Usuario')this.value='' "-->
+	                <input type="password" name="Password" value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "> 
 	                <input type="submit" value="Aceptar">
 	            </form>
 	            	<input type="submit" value="Cerrar" onclick="Inicio('hide');">
@@ -39,5 +39,21 @@
 </body>
 </html>
 <?php
-include("conexion.php")
-?>
+include("conexion.php");
+Session_start();
+if(isset($_SESSION['Correo']))header("Location: Inicio.php");
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$Correo=mysqli_real_escape_string($conexion, $_POST['Correo']);
+		$Contra=mysqli_real_escape_string($conexion, $_POST['Password']);
+		$auth=mysqli_query($conexion,"SELECT * FROM usuario WHERE correo='$Correo' and contrasena='$Contra'");
+		if(mysqli_num_rows($auth)==1){
+			$result=mysqli_fetch_array($auth);
+			$_SESSION['Correo']=$Correo;
+			$_SESSION['tipo_usuario']=$result['tipo_usuario'];
+			header("Location: Inicio.php");
+		}else{
+			echo "<script Language='JavaScript'>document.getElementById('mensaje').innerHTML='Usuario o contraseña incorrecta';</script>";
+		}
+	}
+	mysqli_close($conexion);
+	?>

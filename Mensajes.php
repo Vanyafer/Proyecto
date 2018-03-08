@@ -1,3 +1,7 @@
+<?php
+include("conexion.php");
+		
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +14,12 @@
 <div class="Mensajes">
 	<p>Mensajes</p>
 	<div class="Todos">
-		<div class="Usuarios">
+		<!--div class="Usuarios">
 		<p>Nombre de usuario</p>
 		<div>
 			
 		</div>
-		</div>
+		</div-->
 	</div>
 </div>
 <div class="Conversacion">

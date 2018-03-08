@@ -1,3 +1,8 @@
+<?php
+include("conexion.php");
+session_start();
+if(!isset($_SESSION['Correo']))header("Location: index.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +20,7 @@
 		</ul>
 	</div>
 </div>
-<div class="Foros">
+<div class="Foros" id="Objetos">
 	<p>Objetivos</p>
 	<div class="ListaF">
 		<ul>
@@ -33,3 +38,13 @@
 </div>
 </body>
 </html>
+<?php
+			if($_SESSION['tipo_usuario']==1){
+				echo "<script Language='JavaScript'>
+				document.getElementById('Objetos').style.visibility='visible';
+				</script>";
+			}
+			if($_SESSION['tipo_usuario']==2){
+				echo "<script Language='JavaScript'>document.getElementById('Objetos').style.display='none';</script>";
+			}
+	?>

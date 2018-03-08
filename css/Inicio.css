@@ -25,6 +25,7 @@ a{
 	text-align: center;
 	display: block;
 	border-radius: 5px;
+	position: relative;
 	}
 .Publicar a{
 	color: #219ac6;

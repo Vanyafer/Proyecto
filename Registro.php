@@ -83,7 +83,6 @@
 							<br>
 							<p> <input type="checkbox" name="Terminos"> Acepto <a href="">Terminos y condiciones </a></p>
 							<p id="Terminos"></p>
-							<input type="submit" value="Aceptar" onclick="Aceptar();">
 			<br>
 					</div>
 				</div>
