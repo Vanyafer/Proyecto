@@ -1,5 +1,8 @@
 <?php
 include("conexion.php");
+
+session_start();
+if(!isset($_SESSION['Correo']))header("Location: index.php");
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +25,6 @@ include("conexion.php");
 </html>
 <?php
 
-				echo $_SESSION['tipo_usuario'];
 			if($_SESSION['tipo_usuario'] == 1){
 				echo "<script Language='JavaScript'>document.getElementById('Publicar').style.visibility='visible';</script>";
 			}

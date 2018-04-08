@@ -1,4 +1,7 @@
+<?php 
+include("conexion.php");
 
+?>
 <html>
 <head>
 	<title>Registro</title>
@@ -6,69 +9,102 @@
 	<script src="jscolor/jscolor.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript">
-			function validarContrasena(){
-				var Contrasena = document.getElementById("Contrasena").value;
+		
+function validarContrasena(){
+	var Contrasena = document.getElementById("Contrasena").value;
 				var Contrasena1 = document.getElementById("Contrasena1").value;
 				if(Contrasena.length < 8 || Contrasena.match(/[A-Z]/) == null || Contrasena.match(/[0-9]/) == null){
-					document.getElementById('Contra').innerHTML="*La contrase;a debe de tener minimo 8 carateres, un numero y una mayuscula"
+					document.getElementById('valContra').innerHTML="*La contrase;a debe de tener minimo 8 carateres, un numero y una mayuscula"
 				}else{
-					document.getElementById('Contra').innerHTML="";
+					document.getElementById('valContra').innerHTML="";
 					if(Contrasena1 != Contrasena){
-						document.getElementById('Con').innerHTML='*Las contrasenas no coinciden';
+						document.getElementById('valCon').innerHTML='*Las contrasenas no coinciden';
 					}else{
-						document.getElementById('Con').innerHTML="";
+						document.getElementById('valCon').innerHTML="";
 						return true;
 					}
 				}
 
-			
-			}
-			function validarCorreo(){
-			var Correo = document.getElementById("Correo").value;
-			var correcto =  "/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i";
-				if(Correo.search(correcto)!=0){
-					document.getElementById('valCorreo').innerHTML="*Favor de escribir un correo valido";
-				}else{
-					document.getElementById('valCorreo').innerHTML="";
-					return true;
-				}
-			}
-			function Aceptar(){
-			var Usuario = document.getElementById("Usuario").value;
-			if(validarContrasena() == true && validarCorreo() == true){
-				
-			}
+}
+function validarUsuario(){
+
+	$.ajax({
+	 			type:  "POST", //método de envio
+                data: $("#formdata").serialize(), //datos que se envian a traves de ajax
+                url:   "ValidarU.php", //archivo que recibe la peticion
+                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+
+                if(res == 0){
+                    document.getElementById('valUsuario').innerHTML="Este nombre de usuario ya existe";
+              } else {
+              		document.getElementById('valUsuario').innerHTML="";
+              		return true;     
+                }
+                       
+                }
+        });
+}
+function validarCorreo(){
+	
+	 $.ajax({
+	 			type:  "POST", //método de envio
+                data: $("#formdata").serialize(), //datos que se envian a traves de ajax
+                url:   "Validar.php", //archivo que recibe la peticion
+                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                if(res == 0){
+
+                    document.getElementById('valCorreo').innerHTML="Este correo ya esta registrado";
+              } else {
+              		document.getElementById('valCorreo').innerHTML="";
+              		return true;     
+                }
+                       
+                }
+        });
+}
+function Aceptar(){
+		validarUsuario();
 			
 	}
 	</script>
 </head>
 <body>
-<h1 id="titulo">Registrarse<hr style="color: #1c83a8;"></h1>
+	<h1 id="titulo">Registrarse<hr style="color: #1c83a8;"></h1>
 
 	<div id="Datos">
-		<form action="Registro.php" method="POST">
-			<div id="Fila">
+	 	<form onSubmit="Aceptar(); return false" id="formdata">
+				<div id="Fila">
 					<div id="Columna">
 							<p>Nombre de usuario:</p>
-							<input type="text" id="Usuario" value="Usuario" onBlur="if(this.value=='')this.value='Usuario'" onFocus="if(this.value=='Usuario')this.value='' ">
+							<input type="text" id="Usuario" name="Usuario" value="Usuario" onBlur="if(this.value=='')this.value='Usuario'" onFocus="if(this.value=='Usuario')this.value='' ">
+							<p id="valUsuario"></p>
 							<br>
 							<p>Correo:</p>
-			                <input type="email" id="Correo" value="Correo" onBlur="if(this.value=='')this.value='Correo'" onFocus="if(this.value=='Correo')this.value='' ">
+			                <input type="email" id="Correo"value="Correo" name="Correo" onBlur="if(this.value=='')this.value='Correo'" onFocus="if(this.value=='Correo')this.value='' ">
 			                <p id="valCorreo"></p> 
 			                <br>
 			                <p>Contrasena:</p>
-			                <input type="password" id="Contrasena" value="Contrasena" onBlur="if(this.value=='')this.value='Contrasena'" onFocus="if(this.value=='Contrasena')this.value='' ">
-			                <p id="Contra"></p>
+			                <input type="password" id="Contrasena" name="Contrasena" value="Contrasena" onBlur="if(this.value=='')this.value='Contrasena'" onFocus="if(this.value=='Contrasena')this.value='' ">
+			                <p id="valContra"></p>
 			                <br>
 			                <p>Confirme contrasena:</p>
 			                <input type="password" id="Contrasena1" value="Contrasena" onBlur="if(this.value=='')this.value='Contrasena'" onFocus="if(this.value=='Contrasena')this.value='' ">
-			                <p id="Con"></p>
+			                <p id="valCon"></p>
 			                <br>
+
 					</div>
 					<div id="Columna">
 							<p>Pais:</p>
 							<select name="Pais">
-		       					
+		       					<?php
+								$consulta = mysqli_query($conexion,"SELECT * FROM pais");
+          							while ($valores = mysqli_fetch_array($consulta)) {
+												
+           							echo "<option value=".$valores['id_pais'].">".$valores['nombre_pais']."</option>";
+													
+          								}
+        						?>
+	
 		          							
 
 			
@@ -84,7 +120,11 @@
 							<p> <input type="checkbox" name="Terminos"> Acepto <a href="">Terminos y condiciones </a></p>
 							<p id="Terminos"></p>
 			<br>
+			<input type="submit" value="siguiente">
 					</div>
+								                
+		
+			</form>
 				</div>
 
 				<div id="Artista">
@@ -137,8 +177,9 @@
 								</div>
 							</div>
 						</div>
-						<input type="submit" value="Aceptar" onclick="Aceptar();">
+						
 					</div>
+
 				</div>
 				<div id="Fan">
 						<p>Informacion de contacto</p>
@@ -152,27 +193,11 @@
 						<p>Foto de perfil:</p>
 						<input type="file" name="perfil">
 						<br>
-						<input type="submit" value="Aceptar" onclick="Aceptar();">
+						<input type="submit" value="Aceptar" class="Aceptar" onclick="Aceptar();">
 						<br>
-					</div>
-		</form>
+			</div>
 	</div>		
 		
-<script type="text/javascript">
-	$(document).ready(function(){
-		
-		$("input:radio[name=TipoU]").click(function () {	 
-			if($('input:radio[name=TipoU]:checked').val() == 'A'){
-				document.getElementById('Artista').style.visibility="visible";
-				document.getElementById('Fan').style.visibility="hidden";
-			}
-			else{
-				document.getElementById('Artista').style.visibility="hidden";
-				document.getElementById('Fan').style.visibility="visible";
-			}
-		});
-		
-	});
-</script>
+
 </body>
 </html>

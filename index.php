@@ -46,7 +46,8 @@ if(isset($_SESSION['Correo']))header("Location: Inicio.php");
 		$Correo=mysqli_real_escape_string($conexion, $_POST['Correo']);
 		$Contra=mysqli_real_escape_string($conexion, $_POST['Password']);
 		$auth=mysqli_query($conexion,"SELECT * FROM usuario WHERE correo='$Correo' and contrasena='$Contra'");
-		if(mysqli_num_rows($auth)==1){
+
+		if(mysqli_num_rows($auth)==1){;
 			$result=mysqli_fetch_array($auth);
 			$_SESSION['Correo']=$Correo;
 			$_SESSION['tipo_usuario']=$result['tipo_usuario'];
