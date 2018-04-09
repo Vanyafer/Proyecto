@@ -15,10 +15,12 @@ function validarContrasena(){
 				var Contrasena1 = document.getElementById("Contrasena1").value;
 				if(Contrasena.length < 8 || Contrasena.match(/[A-Z]/) == null || Contrasena.match(/[0-9]/) == null){
 					document.getElementById('valContra').innerHTML="*La contrase;a debe de tener minimo 8 carateres, un numero y una mayuscula"
+					return false;
 				}else{
 					document.getElementById('valContra').innerHTML="";
 					if(Contrasena1 != Contrasena){
 						document.getElementById('valCon').innerHTML='*Las contrasenas no coinciden';
+						return false;
 					}else{
 						document.getElementById('valCon').innerHTML="";
 						return true;
@@ -36,6 +38,7 @@ function validarUsuario(){
 
                 if(res == 0){
                     document.getElementById('valUsuario').innerHTML="Este nombre de usuario ya existe";
+                    return false;
               } else {
               		document.getElementById('valUsuario').innerHTML="";
               		return true;     
@@ -54,6 +57,7 @@ function validarCorreo(){
                 if(res == 0){
 
                     document.getElementById('valCorreo').innerHTML="Este correo ya esta registrado";
+                    return false;
               } else {
               		document.getElementById('valCorreo').innerHTML="";
               		return true;     
@@ -63,8 +67,19 @@ function validarCorreo(){
         });
 }
 function Aceptar(){
-		validarUsuario();
-			
+	if(validarCorreo() & validarUsuario() & validarContrasena()){
+		alert("hola");
+		document.getElementById('Fila').style.display="none";
+				if($('input:radio[name=TipoU]:checked').val() == 'A'){
+					document.getElementById('Artista').style.visibility="visible";
+					
+				}
+				else{
+					document.getElementById('Fan').style.visibility="visible";
+				}
+		
+	}
+		
 	}
 	</script>
 </head>

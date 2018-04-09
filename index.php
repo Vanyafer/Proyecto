@@ -51,6 +51,7 @@ if(isset($_SESSION['Correo']))header("Location: Inicio.php");
 			$result=mysqli_fetch_array($auth);
 			$_SESSION['Correo']=$Correo;
 			$_SESSION['tipo_usuario']=$result['tipo_usuario'];
+			$_SESSION['id_usuario']=$result['id_usuario'];
 			header("Location: Inicio.php");
 		}else{
 			echo "<script Language='JavaScript'>document.getElementById('mensaje').innerHTML='Usuario o contraseña incorrecta';</script>";

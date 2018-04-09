@@ -16,11 +16,7 @@ if(!isset($_SESSION['Correo']))header("Location: index.php");
 </head>
 <body>		
 <?php include "BarraNavegacion.php"; ?>
-<aside class="Lateral">
-	<div id="Publicar" class="Publicar"><a href="">Publicar</a></div>
-	<div class="Recomendados"><p>Recomendaciones</p></div>
-	<div class="Notificaciones"><p>Notificaciones</p></div>
-</aside>
+
 </body>
 </html>
 <?php
