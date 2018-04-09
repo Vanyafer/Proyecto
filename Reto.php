@@ -1,9 +1,12 @@
 <?php
 include("conexion.php");
-session_start();
-if(!isset($_SESSION['Correo']))header("Location: index.php");
+
 $consulta=mysqli_query($conexion,"SELECT * FROM retos");
 $result=mysqli_fetch_array($consulta);
+
+/*$consulta1=mysqli_query($conexion,"SELECT * FROM imagen_reto where id_aceptado=25");
+$result1=mysqli_fetch_array($consulta1);
+*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,6 +40,7 @@ $result=mysqli_fetch_array($consulta);
 	<div class="Fila">
 		<div class="Dias"><p>Ultimo dia: <?php echo $result['fecha']; ?></p></div>
 		<div class="Apoyo"><a href="">ApoyoVisual</a></div>
+		<!--?php 	echo "<img src=".$result1['imagen'].">"; ?-->
 	</div>
 	
 </div>

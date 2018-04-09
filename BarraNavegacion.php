@@ -1,7 +1,7 @@
 <?php
 include("conexion.php");
-isset($_SESSION['Correo']);
-		
+session_start();
+if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 ?>
 <!DOCTYPE html>
 <html>
