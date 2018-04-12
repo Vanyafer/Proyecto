@@ -27,6 +27,9 @@ input[type="submit"] { cursor: pointer; }
     margin: 50px auto;
     width: 300px;
     visibility: hidden; 
+     -moz-box-shadow: 0px 0px 10px 1px #888888;
+    -webkit-box-shadow: 0px 0px 10px 1px #888888;
+    box-shadow: 0px 0px 10px 1px #888888;
 }
 #Sesion h1 {
     background-color: #219ac6;

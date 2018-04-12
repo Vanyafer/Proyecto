@@ -3,10 +3,7 @@ include("conexion.php");
 session_start();
 if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
+
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/BarraNavegacion.css">
@@ -25,8 +22,7 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 	    });
 });
 </script>
-</head>
-<body>
+
 <nav class="barra">
 <ul>
 	<li><a href="Inicio.php">Inicio</a></li>
@@ -35,10 +31,11 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 	
 	<li><a href="" class="icon-newspaper"></a></li>
 	<li><a class="icon-quill Abrir"></a></li>
-	<li><a href="Cerrarsesion.php">C</a></li>
 	<li><a href="Mensajes.php" class="icon-bubbles4"></a></li>
 	<li><a href="Perfiles.php" class="icon-user"></a></li>
 	<li><a href="Configuracion.php" class="icon-cog"></a></li>
+
+	<li><a href="Cerrarsesion.php" class="abajo">C</a></li>
 </ul>	
 </nav>
 <div class="overlay">
@@ -49,8 +46,6 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 
 </div>
 
-</body>
-</html>
 	<?php
 			if($_SESSION['tipo_usuario']==1){
 				echo "<script Language='JavaScript'>

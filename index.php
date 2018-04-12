@@ -31,6 +31,7 @@
 	                <input type="email" name="Correo" value="Correo" onBlur="if(this.value=='')this.value='Correo'" onFocus="if(this.value=='Correo')this.value='' "> 
 	                <!--input type="Text" name="Usuario" value="Usuario" onBlur="if(this.value=='')this.value='Usuario'" onFocus="if(this.value=='Usuario')this.value='' "-->
 	                <input type="password" name="Password" value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "> 
+	                <a href="validarContrasena">No recuerdo mi contrasena</a>
 	                <input type="submit" value="Aceptar">
 	            </form>
 	            	<input type="submit" value="Cerrar" onclick="Inicio('hide');">
@@ -47,15 +48,25 @@ if(isset($_SESSION['Correo']))header("Location: Inicio.php");
 		$Contra=mysqli_real_escape_string($conexion, $_POST['Password']);
 		$auth=mysqli_query($conexion,"SELECT * FROM usuario WHERE correo='$Correo' and contrasena='$Contra'");
 
-		if(mysqli_num_rows($auth)==1){;
+		if(mysqli_num_rows($auth)==1){
 			$result=mysqli_fetch_array($auth);
 			$_SESSION['Correo']=$Correo;
 			$_SESSION['tipo_usuario']=$result['tipo_usuario'];
 			$_SESSION['id_usuario']=$result['id_usuario'];
-			echo "<script Language='JavaScript'>alert(".$_SESSION['id_usuario'].");</script>";
+			if($_SESSION['tipo_usuario']==1){
+				$usuario = $result['id_usuario'];
+				$consulta=mysqli_query($conexion,"SELECT * FROM artista where id_usuario = $usuario");
+				$result=mysqli_fetch_array($consulta);
+				$_SESSION['artista'] = $result['id_artista'];
+			}else{
+				$usuario = $result['id_usuario'];
+				$consulta=mysqli_query($conexion,"SELECT * FROM fan where id_usuario = $usuario");
+				$result=mysqli_fetch_array($consulta);
+				$_SESSION['fan'] = $result['id_fan'];
+			}
+
 			header("Location: Inicio.php");
 		}else{
-			echo "<script Language='JavaScript'>document.getElementById('mensaje').innerHTML='Usuario o contraseña incorrecta';</script>";
 		}
 	}
 	mysqli_close($conexion);

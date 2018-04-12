@@ -9,21 +9,19 @@ include("conexion.php");
 	<script src="jscolor/jscolor.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript">
-		
+		var x;
 function validarContrasena(){
 	var Contrasena = document.getElementById("Contrasena").value;
 				var Contrasena1 = document.getElementById("Contrasena1").value;
 				if(Contrasena.length < 8 || Contrasena.match(/[A-Z]/) == null || Contrasena.match(/[0-9]/) == null){
-					document.getElementById('valContra').innerHTML="*La contrase;a debe de tener minimo 8 carateres, un numero y una mayuscula"
-					return false;
+					document.getElementById('valContra').innerHTML="*La contrase;a debe de tener minimo 8 carateres, un numero y una mayuscula";
 				}else{
 					document.getElementById('valContra').innerHTML="";
 					if(Contrasena1 != Contrasena){
 						document.getElementById('valCon').innerHTML='*Las contrasenas no coinciden';
-						return false;
 					}else{
 						document.getElementById('valCon').innerHTML="";
-						return true;
+						x=1;
 					}
 				}
 
@@ -38,17 +36,15 @@ function validarUsuario(){
 
                 if(res == 0){
                     document.getElementById('valUsuario').innerHTML="Este nombre de usuario ya existe";
-                    return false;
               } else {
               		document.getElementById('valUsuario').innerHTML="";
-              		return true;     
+              		y=1;
                 }
                        
                 }
         });
 }
 function validarCorreo(){
-	
 	 $.ajax({
 	 			type:  "POST", //método de envio
                 data: $("#formdata").serialize(), //datos que se envian a traves de ajax
@@ -57,18 +53,27 @@ function validarCorreo(){
                 if(res == 0){
 
                     document.getElementById('valCorreo').innerHTML="Este correo ya esta registrado";
-                    return false;
+
               } else {
               		document.getElementById('valCorreo').innerHTML="";
-              		return true;     
-                }
-                       
+              		
+                }  
                 }
         });
+	
 }
 function Aceptar(){
-	if(validarCorreo() & validarUsuario() & validarContrasena()){
-		alert("hola");
+
+	x = 0;
+	y = 0;
+	validarCorreo();
+	validarContrasena();
+	validarUsuario();
+
+	alert(<?php echo $z; ?>);
+
+	if((x==1) && (y==1) && (z==1)){
+			alert("Hola");
 		document.getElementById('Fila').style.display="none";
 				if($('input:radio[name=TipoU]:checked').val() == 'A'){
 					document.getElementById('Artista').style.visibility="visible";
@@ -126,7 +131,7 @@ function Aceptar(){
 									</select>
 							<br>
 							<p>Fecha de nacimiento:</p>
-							<input type="date" name="Edad" value="Edad">
+							<input type="date" name="Edad" value="Edad" min="01-01-2000">
 							<br>
 							<p>Tipo de usuario:</p>
 							<p><input type="radio" name="TipoU" value="A"> Artista </p>

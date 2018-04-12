@@ -10,6 +10,7 @@
 </div>
 <?php
 include("conexion.php");
+session_start();
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$folder="./imgReto/";
 		$tmp_name = $_FILES["image"]["tmp_name"];
@@ -19,11 +20,9 @@ include("conexion.php");
 		$consulta=mysqli_query($conexion,"SELECT * FROM retos");
 		$result=mysqli_fetch_array($consulta);
 		$reto = $result['id_reto'];
-		$usuario = $_SESSION['id_usuario'];
-		$consulta=mysqli_query($conexion,"SELECT * FROM artista where id_usuario = $usuario");
-		$result=mysqli_fetch_array($consulta);
-		$artista = $result['id_artista'];
-
+		
+		$artista = $_SESSION['artista'];
+		
 		mysqli_query($conexion,"INSERT into retos_aceptados VALUES(NULL,$artista,$reto)");
 
 		$consulta=mysqli_query($conexion,"SELECT MAX(id_aceptado) as id FROM retos_aceptados");
@@ -34,6 +33,5 @@ include("conexion.php");
 		mysqli_query($conexion,"INSERT into imagen_reto VALUES(NULL,'$folder".$_FILES["image"]["name"]."',$id)");
 		header("Location: Reto.php");
 	}
-
 }
 ?>

@@ -1,12 +1,6 @@
 <?php
 include("conexion.php");
 
-$consulta=mysqli_query($conexion,"SELECT * FROM retos");
-$result=mysqli_fetch_array($consulta);
-
-/*$consulta1=mysqli_query($conexion,"SELECT * FROM imagen_reto where id_aceptado=25");
-$result1=mysqli_fetch_array($consulta1);
-*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,15 +24,43 @@ $result1=mysqli_fetch_array($consulta1);
 </script>
 </head>
 <body>		
-<?php include "BarraNavegacion.php"; ?>
+<?php include "BarraNavegacion.php";
+$consulta=mysqli_query($conexion,"SELECT * FROM retos");
+$result=mysqli_fetch_array($consulta);
+$reto = $result['id_reto'];
+$des = $result['descripcion'];
+$fecha = $result['fecha'];
+
+
+$artista = $_SESSION['artista'];
+
+$consulta=mysqli_query($conexion,"SELECT * FROM retos_aceptados where id_artista = $artista and id_reto = $reto");
+if(mysqli_num_rows($consulta)>0){
+	echo "<script Language='JavaScript'>
+				$(document).ready(function(){	
+					document.getElementById('subir').style.display='none';
+				});
+		</script>";
+
+	$result=mysqli_fetch_array($consulta);
+	$aceptado = $result['id_aceptado'];
+	$consulta=mysqli_query($conexion,"SELECT * FROM imagen_reto where id_aceptado= $aceptado");
+	if($consulta){	
+		$result=mysqli_fetch_array($consulta);
+	}
+
+
+}
+
+ ?>
 <div class="Reto">
 	<h1>Reto</h1>
 	<div class="Fila">
-		<div class="Descripcion"><?php echo $result['descripcion']; ?></div>
-		<div class="Subir"><a class="Abrir1">Subir</a></div>
+		<div class="Descripcion"><?php echo $des; ?></div>
+		<div class="Subir"  id="subir" ><a class="Abrir1">Subir</a></div>
 	</div>
 	<div class="Fila">
-		<div class="Dias"><p>Ultimo dia: <?php echo $result['fecha']; ?></p></div>
+		<div class="Dias"><p>Ultimo dia: <?php echo $fecha; ?></p></div>
 		<div class="Apoyo"><a href="">ApoyoVisual</a></div>
 		<!--?php 	echo "<img src=".$result1['imagen'].">"; ?-->
 	</div>
@@ -56,11 +78,11 @@ $result1=mysqli_fetch_array($consulta1);
 	<p>Retos Hechos</p>
 	<div class="ListaR">
 		<ul>
-
+		<?php echo "<img src=".$result['imagen'].">"; ?>
 		</ul>
 	</div>
 </div>
-<div class="Sub">Retos Anteriores</div>
+
 <div class="overlay1">
 	<div class="popup1">
 		    		<?php include "Subir.php"; ?>

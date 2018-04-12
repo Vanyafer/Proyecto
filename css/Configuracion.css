@@ -53,3 +53,14 @@ img{
 .jscolor{
     width: 80%;
 }
+.boton{
+    cursor: pointer;
+    background: #219ac6;
+    border-radius: 3px;
+    color: #fff;
+    float: right;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 12px 20px;
+}
+.boton:hover { background: #1c83a8; }

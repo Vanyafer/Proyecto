@@ -1,11 +1,11 @@
-.popup,.popup1{
+.popup,.popup1,.popup2{
    display: block;
     z-index: 100;
     position: sticky;
 }
-.overlay,.overlay1{
+.overlay,.overlay1,.overlay2{
     display: none;
-        background: -webkit-radial-gradient(center, ellipse cover, rgba(127,127,127,0) 0%,rgba(127,127,127,0.9) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(127,127,127,0) 0%,rgba(127,127,127,0.9) 100%);
     bottom: 0;
     left: 0;
     position: fixed;
