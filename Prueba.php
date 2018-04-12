@@ -2,17 +2,28 @@
 <html>
 <head>
 	<title></title>
-	<script type="text/javascript">
-		
+	<script src="js/jquery.min.js"></script>
+	<script src="js/masonry.pkgd.min.js"></script>
+<script type="text/javascript">
+$('#grid2 img').each(function(){
+    var $this = $(this); 
+    $this.wrap('<div class="item"><a></a></div>');
+    $('a').removeAttr('href');  
+});
+$('#grid2').addClass('effect-2');
 
-
+$(window).load(function(){
+  var $container = $('.grid');
+  // initialize
+  $container.masonry({
+    //columnWidth: 200,
+    itemSelector: '.item'
+  })
+  $('.item > a').removeAttr('href');
+});
 	</script>
 	<style type="text/css">
-	*{
-		margin: 0;
-		padding: 0;
-	}
-	*, *:after, *:before { 
+		*, *:after, *:before { 
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box; 
           box-sizing: border-box;
@@ -113,9 +124,11 @@ img {
   .entry > .grid > .item {width: 100%;}
 }
 
+
 	</style>
 </head>
 <body>
+<h2>Masonry Gallery</h2>
 <div class="grid effect-2" id="grid">
     <div class="item"><a href="#"><img src="https://goo.gl/NiXtS3" alt="" /></a></div>
     <div class="item"><a href="#"><img src="https://goo.gl/bybkCD" alt="" /></a></div>
@@ -150,6 +163,19 @@ img {
     <div class="item"><a href="#"><img src="https://goo.gl/BZ6Uiv" alt="" /></a></div>
     <div class="item"><a href="#"><img src="https://goo.gl/TALyhb" alt="" /></a></div>
     <div class="item"><a href="#"><img src="https://goo.gl/QO52Sd" alt="" /></a></div>
+</div>
+<div class="entry">
+<h2>Masonry Gallery Post</h2>
+<time>12:48</time>
+<p>Lorem ipsum ad his scripta blandit partiendo,  eum fastidii accumsan euripidis in,  eum liber hendrerit an.  Qui ut wisi vocibus suscipiantur,  quo dicit ridens inciderint id.  Quo mundi lobortis reformidans eu,  legimus senserit definiebas an eos.  Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per.  In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per.</p>
+<div class="grid" id="grid2">
+    <img src="https://goo.gl/NiXtS3" alt="" />
+    <img src="https://goo.gl/bybkCD" alt="" />
+    <img src="https://goo.gl/g5jr1N" alt="" />
+    <img src="https://goo.gl/Akx3Oh" alt="" />
+</div>
+<p>Lorem ipsum ad his scripta blandit partiendo,  eum fastidii accumsan euripidis in,  eum liber hendrerit an.  Qui ut wisi vocibus suscipiantur, ut fugit veritus placerat per.</p>
+<img src="https://goo.gl/Akx3Oh" alt="" />
 </div>
 </body>
 </html>

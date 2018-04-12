@@ -40,7 +40,9 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 </nav>
 <div class="overlay">
 	<div class="popup">
-		    		<?php include "Publicar.php"; ?>
+		    		<?php 
+		    		$pag=$_SERVER['PHP_SELF'];
+		    		include "Publicar.php"; ?>
 	
 </div>
 

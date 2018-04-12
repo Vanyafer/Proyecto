@@ -40,8 +40,8 @@ session_start();
 		$artista = $result['id_artista'];
 	
 		mysqli_query($conexion,"INSERT into publicacion VALUES(NULL,NULL,$edad,'$des',NULL,$tipo,'$folder".$_FILES["image"]["name"]."',$artista)");
-
-		header("Location: Inicio.php");
+			$pag=$_SERVER['PHP_SELF'];
+		header("Location: ".$pag);
 	}
 }
 ?>
