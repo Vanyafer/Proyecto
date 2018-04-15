@@ -3,7 +3,7 @@
 		$usuario="root";
 		$contra="";
 		$BD="Proyecto";
-	$conexion = @mysqli_connect($sevirdor,$usuario,$contra);
+	$conexion = @mysqli_connect($servidor,$usuario,$contra);
 	if(!$conexion){
 		die('<strong>Error en la conexion</strong>'.mysqli_error());
 	}

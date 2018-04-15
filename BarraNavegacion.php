@@ -26,7 +26,7 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 <nav class="barra">
 <ul>
 	<li><a href="Inicio.php">Inicio</a></li>
-	<li><a href="Foro.php" class="icon-bullhorn"></a></li>
+	<li><a href="Forotest.php" class="icon-bullhorn"></a></li>
 	<li><a id="reto" href="Reto.php" class="icon-pen"></a></li>
 	
 	<li><a href="" class="icon-newspaper"></a></li>

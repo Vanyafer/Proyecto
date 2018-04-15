@@ -19,7 +19,7 @@ include("conexion.php");
 	</div>
 </div>
 <div class="Foros" id="Objetos">
-	<p>Objetivos</p>
+	<p>Objetos</p>
 	<div class="ListaF">
 		<ul>
 
