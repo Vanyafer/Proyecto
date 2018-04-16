@@ -2,63 +2,78 @@
 	margin: 0;
 	padding: 0;
 }
-	*, *:after, *:before { 
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box; 
-          box-sizing: border-box;
-}
+*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
 .clearfix:before, .clearfix:after { content: " "; display: table; }
 .clearfix:after { clear: both; }
-
-img {
-  border: 0;
-  display: block;
-  width: 100%;
-  cursor: pointer;
-}
-
 .grid {
-	list-style: none;
-	padding: 1;
 	margin-left: 45px;
+	list-style: none;
+	padding: 0;
+
 }
-.grid .item {
+
+.grid li {
+	position: relative;
 	display: block;
 	float: left;
-	padding: 2px;
-	width: 25%;
-	opacity: 1;
-	position: relative;
+	padding: 1px;
+	width: 20%;
 }
-.grid .item a,.grid .item img {
+
+.grid li.shown,
+.no-js .grid li,
+.no-cssanimations .grid li {
+	opacity: 1;
+}
+
+.grid li a,
+.grid li img {
 	outline: none;
 	border: none;
 	display: block;
-	max-width: 100%;
-}
-.grid.effect-2 .item.animate {
-	-webkit-transform: translateY(200px);
-	transform: translateY(200px);
-	-webkit-animation: moveUp 0.65s ease forwards;
-	animation: moveUp 0.65s ease forwards;
+	width: 100%;
+	cursor: pointer;
 }
 
-@-webkit-keyframes moveUp {
-	0% { }
-	100% { -webkit-transform: translateY(0); opacity: 1; }
+
+/* Effect 3: Scale up */
+.grid.effect-3 li.animate {
+	-webkit-transform: scale(0.6);
+	transform: scale(0.6);
+	-webkit-animation: scaleUp 0.65s ease-in-out forwards;
+	animation: scaleUp 0.65s ease-in-out forwards;
 }
 
-@keyframes moveUp {
+@-webkit-keyframes scaleUp {
 	0% { }
-	100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+	100% { -webkit-transform: scale(1); opacity: 1; }
 }
-@media screen and (max-width: 1300px) {
-	.grid .item {width: 33%;}
+
+@keyframes scaleUp {
+	0% { }
+	100% { -webkit-transform: scale(1); transform: scale(1); opacity: 1; }
+}
+@media screen and (max-width: 1500px) {
+	.grid li {
+		width: 25%;
+	}
+}
+@media screen and (max-width: 1200px) {
+	.grid li {
+		width: 33%;
+	}
 }
 @media screen and (max-width: 900px) {
-	.grid .item {width: 50%;}
+	.grid li {
+		width: 50%;
+	}
 }
-@media screen and (max-width: 500px) {
-	.grid .item {width: 100%;}
+
+@media screen and (max-width: 600px) {
+	.grid li {
+		width: 100%;
+	}
 }
