@@ -1,6 +1,9 @@
 <?php 
 include("conexion.php");
-
+$dia = date("d");
+					$mes = date("m");
+					$ano = date("Y");
+					$fecha = "2004-".$mes."-".$dia;
 ?>
 <html>
 <head>
@@ -9,97 +12,109 @@ include("conexion.php");
 	<script src="jscolor/jscolor.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript">
-		var x;
-function validarTerminos(){
-	if()
-}
-function validarContrasena(){
-	var Contrasena = document.getElementById("Contrasena").value;
-				var Contrasena1 = document.getElementById("Contrasena1").value;
-				if(Contrasena.length < 8 || Contrasena.match(/[A-Z]/) == null || Contrasena.match(/[0-9]/) == null){
-					document.getElementById('valContra').innerHTML="*La contrase;a debe de tener minimo 8 carateres, un numero y una mayuscula";
-					x=0
-				}else{
-					document.getElementById('valContra').innerHTML="";
-					if(Contrasena1 != Contrasena){
-						document.getElementById('valCon').innerHTML='*Las contrasenas no coinciden';
-						x=0;
-
+				function validarEdad(){
+					if($("#Edad").val()!=""){
+						$("#valEdad").html("");
+						v = 1;
 					}else{
-						document.getElementById('valCon').innerHTML="";
-						x=1;
+						$("#valEdad").html("Introduce una fecha");
+						v = 0;
 					}
 				}
+				function validarTerminos(){
+					if($("#Terminos").prop('checked')){
+						w = 1;
+						$("#valTerminos").html("");
+					}else{
+						$("#valTerminos").html("Aceptar terminos y condiciones");
+						w = 0;
+					}
+				}
+				function validarContrasena(){
+					var Contrasena = document.getElementById("Contrasena").value;
+								var Contrasena1 = document.getElementById("Contrasena1").value;
+								if(Contrasena.length < 8 || Contrasena.match(/[A-Z]/) == null || Contrasena.match(/[0-9]/) == null){
+									document.getElementById('valContra').innerHTML="*La contrase;a debe de tener minimo 8 carateres, un numero y una mayuscula";
+									x=0
+								}else{
+									document.getElementById('valContra').innerHTML="";
+									if(Contrasena1 != Contrasena){
+										document.getElementById('valCon').innerHTML='*Las contrasenas no coinciden';
+										x=0;
 
-}
-function validarUsuario(){
+									}else{
+										document.getElementById('valCon').innerHTML="";
+										x=1;
+									}
+								}
 
-	$.ajax({
-	 			type:  "POST", //método de envio
-                data: $("#formdata").serialize(), //datos que se envian a traves de ajax
-                url:   "ValidarU.php", //archivo que recibe la peticion
-                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+				}
+				function validarUsuario(){
 
-                if(res == 0){
-                    document.getElementById('valUsuario').innerHTML="Este nombre de usuario ya existe";
-                    $("#contraV").val("0");
-              } else {
-              		document.getElementById('valUsuario').innerHTML="";
-              		$("#contraV").val("1");
-                }
-                       
-                }
-        });
-}
-function validarCorreo(){
-	 $.ajax({
-	 			type:  "POST", //método de envio
-                data: $("#formdata").serialize(), //datos que se envian a traves de ajax
-                url:   "Validar.php", //archivo que recibe la peticion
-                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-                if(res == 0){
+					$.ajax({
+					 			type:  "POST", //método de envio
+				                data: $("#formdata").serialize(), //datos que se envian a traves de ajax
+				                url:   "ValidarU.php", //archivo que recibe la peticion
+				                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
 
-                    document.getElementById('valCorreo').innerHTML="Este correo ya esta registrado";
-                    $("#correoV").val("0");
+				                if(res == 0){
+				                    document.getElementById('valUsuario').innerHTML="Este nombre de usuario ya existe";
+				                    $("#contraV").val("0");
+				              } else {
+				              		document.getElementById('valUsuario').innerHTML="";
+				              		$("#contraV").val("1");
+				                }
+				                       
+				                }
+				        });
+				}
+				function validarCorreo(){
+					 $.ajax({
+					 			type:  "POST", //método de envio
+				                data: $("#formdata").serialize(), //datos que se envian a traves de ajax
+				                url:   "Validar.php", //archivo que recibe la peticion
+				                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+				                if(res == 0){
 
-              } else {
-              		document.getElementById('valCorreo').innerHTML="";
-              		$("#correoV").val("1");
-              		
-                }  
-                }
-        });
-	
-}
-function Aceptar(){
+				                    document.getElementById('valCorreo').innerHTML="Este correo ya esta registrado";
+				                    $(w).val("0");
 
-	
-	validarCorreo();
-	validarContrasena();
-	validarUsuario();
-	y = $("#contraV").val();
-	z = $("#correoV").val();
-	if((x==1) && (y==1) && (z==1)){
-			alert("Hola");
-		document.getElementById('Fila').style.display="none";
-				if($('input:radio[name=TipoU]:checked').val() == 'A'){
-					document.getElementById('Artista').style.visibility="visible";
+				              } else {
+				              		document.getElementById('valCorreo').innerHTML="";
+				              		$(y).val("1");
+				              		
+				                }  
+				                }
+				        });
 					
 				}
-				else{
-					document.getElementById('Fan').style.visibility="visible";
-				}
-		
-	}
-		
-	
-	}
+				function Aceptar(){
+
+					
+					validarCorreo();
+					validarContrasena();
+					validarUsuario();
+					validarTerminos();
+					validarEdad();
+					if( (v==1) && (w==1) && (x==1) && (y==1) && (z==1) ){
+							alert("Hola");
+						document.getElementById('Fila').style.display="none";
+								if($('input:radio[name=TipoU]:checked').val() == 'A'){
+									document.getElementById('Artista').style.visibility="visible";
+									
+								}
+								else{
+									document.getElementById('Fan').style.visibility="visible";
+								}
+						
+					}
+						
+					
+					}
 	</script>
 </head>
 <body>
 	<h1 id="titulo">Registrarse<hr style="color: #1c83a8;"></h1>
-		<input type="hidden" name="" id="correoV">
-		<input type="hidden" name="" id="contraV">
 	<div id="Datos">
 	 	<form onSubmit="Aceptar(); return false" id="formdata">
 				<div id="Fila">
@@ -140,16 +155,17 @@ function Aceptar(){
 									</select>
 							<br>
 							<p>Fecha de nacimiento:</p>
-							<input type="date" name="Edad" value="Edad" min="2004-04-15">
+							<input type="date" name="Edad" id="Edad" max="<?php echo $fecha; ?>" value="<?php echo $fecha; ?>">
+							<p id="valEdad"></p>
 							<br>
 							<p>Tipo de usuario:</p>
 							<p><input type="radio" name="TipoU" value="A" checked=""> Artista </p>
 							<p><input type="radio" name="TipoU" value="F"> Fan </p>
 							<br>
-							<p> <input type="checkbox" name="Terminos"> Acepto <a href="">Terminos y condiciones </a></p>
-							<p id="Terminos"></p>
-			<br>
-			<input type="submit" value="siguiente">
+							<p> <input type="checkbox" name="Terminos" id="Terminos"> Acepto <a href="">Terminos y condiciones </a></p>
+							<p id="valTerminos"></p>
+					<br>
+					<input type="submit" value="siguiente">
 			
 					</div>
 					
@@ -227,7 +243,7 @@ function Aceptar(){
 						<input type="submit" value="Aceptar" class="Aceptar" onclick="Aceptar();">
 						<br>
 			</div>
-			</form>	
+		</form>	
 	</div>		
 		
 
