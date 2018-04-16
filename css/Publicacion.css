@@ -56,8 +56,6 @@
 .Box{
    display: inline-block;
 	overflow: none;
-	max-height: 500px;
-	max-width: 1500px;
 }
 .Box1{
    display: inline-block;
@@ -66,6 +64,9 @@
 }
 .Box img{
 	width: 100%;
+	
+	max-height: 500px;
+	max-width: 1500px;
 	
 }
 .Comentarios{
