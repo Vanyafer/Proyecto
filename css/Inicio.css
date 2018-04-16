@@ -3,7 +3,7 @@
 	padding: 0;
 }
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-body, html { font-size: 100%; padding: 0; margin: 0;}
+
 
 /* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
 .clearfix:before, .clearfix:after { content: " "; display: table; }
@@ -12,14 +12,15 @@ body, html { font-size: 100%; padding: 0; margin: 0;}
 	margin-left: 45px;
 	list-style: none;
 	padding: 0;
+
 }
 
 .grid li {
+	position: relative;
 	display: block;
 	float: left;
-	padding: 5px;
-	width: 25%;
-	opacity: 0;
+	padding: 1px;
+	width: 20%;
 }
 
 .grid li.shown,
@@ -33,7 +34,8 @@ body, html { font-size: 100%; padding: 0; margin: 0;}
 	outline: none;
 	border: none;
 	display: block;
-	max-width: 100%;
+	width: 100%;
+	cursor: pointer;
 }
 
 
@@ -54,15 +56,23 @@ body, html { font-size: 100%; padding: 0; margin: 0;}
 	0% { }
 	100% { -webkit-transform: scale(1); transform: scale(1); opacity: 1; }
 }
-
-
+@media screen and (max-width: 1500px) {
+	.grid li {
+		width: 25%;
+	}
+}
+@media screen and (max-width: 1200px) {
+	.grid li {
+		width: 33%;
+	}
+}
 @media screen and (max-width: 900px) {
 	.grid li {
 		width: 50%;
 	}
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
 	.grid li {
 		width: 100%;
 	}

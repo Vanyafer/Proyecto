@@ -14,6 +14,7 @@
 		<input type="submit" value="Cerrar" class="Close">
 	</fieldset>
 </div>
+
 <?php
 include("conexion.php");
 session_start();
@@ -32,16 +33,17 @@ session_start();
 			$edad = 0;
 		}
 		$tipo = $_POST['tipoP'];
-		
-		 
+		$dia = date("d");
+		$mes = date("m");
+		$ano = date("Y");
+		$fecha = $ano."-".$mes."-".$dia;
 		$usuario = $_SESSION['id_usuario'];
 		$consulta=mysqli_query($conexion,"SELECT * FROM artista where id_usuario = $usuario");
 		$result=mysqli_fetch_array($consulta);
 		$artista = $result['id_artista'];
-	
-		mysqli_query($conexion,"INSERT into publicacion VALUES(NULL,NULL,$edad,'$des',NULL,$tipo,'$folder".$_FILES["image"]["name"]."',$artista)");
-			$pag=$_SERVER['PHP_SELF'];
-		header("Location: ".$pag);
+				mysqli_query($conexion,"INSERT into publicacion VALUES(NULL,'$fecha',$edad,'$des',NULL,$tipo,'$folder".$_FILES["image"]["name"]."',$artista)");
+			
+		header("Location: Inicio.php");
 	}
 }
 ?>

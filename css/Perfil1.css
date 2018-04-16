@@ -3,18 +3,17 @@
 	padding: 0;
 }
 .Perfil{
-	width: 100%;
+	width: 100%-45px;
 	text-align: center;
-	display: flex;
-	position: relative;
 	height: 150px;
+	left: 45px;
 }
-a {
+.Perfil1 a {
 	padding: 5px;
 	text-decoration: none;
 	color: #219ac6;
 }
-a:hover{
+.Perfil1 a:hover{
 	color: #c1ebff;
 }
 .Imagen{

@@ -10,15 +10,21 @@ include("conexion.php");
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript">
 		var x;
+function validarTerminos(){
+	if()
+}
 function validarContrasena(){
 	var Contrasena = document.getElementById("Contrasena").value;
 				var Contrasena1 = document.getElementById("Contrasena1").value;
 				if(Contrasena.length < 8 || Contrasena.match(/[A-Z]/) == null || Contrasena.match(/[0-9]/) == null){
 					document.getElementById('valContra').innerHTML="*La contrase;a debe de tener minimo 8 carateres, un numero y una mayuscula";
+					x=0
 				}else{
 					document.getElementById('valContra').innerHTML="";
 					if(Contrasena1 != Contrasena){
 						document.getElementById('valCon').innerHTML='*Las contrasenas no coinciden';
+						x=0;
+
 					}else{
 						document.getElementById('valCon').innerHTML="";
 						x=1;
@@ -36,9 +42,10 @@ function validarUsuario(){
 
                 if(res == 0){
                     document.getElementById('valUsuario').innerHTML="Este nombre de usuario ya existe";
+                    $("#contraV").val("0");
               } else {
               		document.getElementById('valUsuario').innerHTML="";
-              		y=1;
+              		$("#contraV").val("1");
                 }
                        
                 }
@@ -53,9 +60,11 @@ function validarCorreo(){
                 if(res == 0){
 
                     document.getElementById('valCorreo').innerHTML="Este correo ya esta registrado";
+                    $("#correoV").val("0");
 
               } else {
               		document.getElementById('valCorreo').innerHTML="";
+              		$("#correoV").val("1");
               		
                 }  
                 }
@@ -64,14 +73,12 @@ function validarCorreo(){
 }
 function Aceptar(){
 
-	x = 0;
-	y = 0;
+	
 	validarCorreo();
 	validarContrasena();
 	validarUsuario();
-
-	alert(<?php echo $z; ?>);
-
+	y = $("#contraV").val();
+	z = $("#correoV").val();
 	if((x==1) && (y==1) && (z==1)){
 			alert("Hola");
 		document.getElementById('Fila').style.display="none";
@@ -85,12 +92,14 @@ function Aceptar(){
 		
 	}
 		
+	
 	}
 	</script>
 </head>
 <body>
 	<h1 id="titulo">Registrarse<hr style="color: #1c83a8;"></h1>
-
+		<input type="hidden" name="" id="correoV">
+		<input type="hidden" name="" id="contraV">
 	<div id="Datos">
 	 	<form onSubmit="Aceptar(); return false" id="formdata">
 				<div id="Fila">
@@ -131,20 +140,22 @@ function Aceptar(){
 									</select>
 							<br>
 							<p>Fecha de nacimiento:</p>
-							<input type="date" name="Edad" value="Edad" min="01-01-2000">
+							<input type="date" name="Edad" value="Edad" min="2004-04-15">
 							<br>
 							<p>Tipo de usuario:</p>
-							<p><input type="radio" name="TipoU" value="A"> Artista </p>
+							<p><input type="radio" name="TipoU" value="A" checked=""> Artista </p>
 							<p><input type="radio" name="TipoU" value="F"> Fan </p>
 							<br>
 							<p> <input type="checkbox" name="Terminos"> Acepto <a href="">Terminos y condiciones </a></p>
 							<p id="Terminos"></p>
 			<br>
 			<input type="submit" value="siguiente">
+			
 					</div>
-								                
+					
+					                
 		
-			</form>
+			
 				</div>
 
 				<div id="Artista">
@@ -216,6 +227,7 @@ function Aceptar(){
 						<input type="submit" value="Aceptar" class="Aceptar" onclick="Aceptar();">
 						<br>
 			</div>
+			</form>	
 	</div>		
 		
 

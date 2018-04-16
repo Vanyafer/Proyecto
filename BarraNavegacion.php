@@ -41,7 +41,7 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 <div class="overlay">
 	<div class="popup">
 		    		<?php 
-		    		$pag=$_SERVER['PHP_SELF'];
+		    		
 		    		include "Publicar.php"; ?>
 	
 </div>
