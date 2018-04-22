@@ -59,12 +59,12 @@ $dia = date("d");
 
 				                if(res == 0){
 				                    document.getElementById('valUsuario').innerHTML="Este nombre de usuario ya existe";
-				                    $("#contraV").val("0");
+				                    $("#contraV").val(0);
 				              } else {
 				              		document.getElementById('valUsuario').innerHTML="";
-				              		$("#contraV").val("1");
+				              		$("#contraV").val(1);
 				                }
-				                       
+				                 
 				                }
 				        });
 				}
@@ -77,46 +77,26 @@ $dia = date("d");
 				                if(res == 0){
 
 				                    document.getElementById('valCorreo').innerHTML="Este correo ya esta registrado";
-				                    $(w).val("0");
+				                    $("#correoV").val(0);
 
 				              } else {
 				              		document.getElementById('valCorreo').innerHTML="";
-				              		$(y).val("1");
+				              		$("#correoV").val(1);
 				              		
 				                }  
 				                }
 				        });
 					
 				}
-				function Aceptar(){
-
-					
-					validarCorreo();
-					validarContrasena();
-					validarUsuario();
-					validarTerminos();
-					validarEdad();
-					if( (v==1) && (w==1) && (x==1) && (y==1) && (z==1) ){
-							alert("Hola");
-						document.getElementById('Fila').style.display="none";
-								if($('input:radio[name=TipoU]:checked').val() == 'A'){
-									document.getElementById('Artista').style.visibility="visible";
-									
-								}
-								else{
-									document.getElementById('Fan').style.visibility="visible";
-								}
-						
-					}
-						
-					
-					}
+				
 	</script>
 </head>
 <body>
 	<h1 id="titulo">Registrarse<hr style="color: #1c83a8;"></h1>
 	<div id="Datos">
-	 	<form onSubmit="Aceptar(); return false" id="formdata">
+	<input type="hidden" id="correoV" >
+	<input type="hidden" name="" id="contraV">
+	 	<form  action="Insert.php" id="formdata" method="POST">
 				<div id="Fila">
 					<div id="Columna">
 							<p>Nombre de usuario:</p>
@@ -159,14 +139,14 @@ $dia = date("d");
 							<p id="valEdad"></p>
 							<br>
 							<p>Tipo de usuario:</p>
-							<p><input type="radio" name="TipoU" value="A" checked=""> Artista </p>
-							<p><input type="radio" name="TipoU" value="F"> Fan </p>
+							<p><input type="radio" name="TipoU" value="1" checked=""> Artista </p>
+							<p><input type="radio" name="TipoU" value="2"> Fan </p>
 							<br>
 							<p> <input type="checkbox" name="Terminos" id="Terminos"> Acepto <a href="">Terminos y condiciones </a></p>
 							<p id="valTerminos"></p>
 					<br>
-					<input type="submit" value="siguiente">
-			
+					<!--input type="submit" value="siguiente"-->
+					<div class="Subir"><a class="Aceptar">Siguiente</a></div>
 					</div>
 					
 					                
@@ -177,9 +157,13 @@ $dia = date("d");
 				<div id="Artista">
 					<div id="Fila">
 						<div id="Columna">
+						<p>
+								Informacion de contacto:<br>
+								<textarea name="InformacionA"></textarea>
+							</p>
 							<p>
 								Tecnica de interes:<br>
-								<textarea name="Tecnica"></textarea>
+								<textarea name="Tecnica" ></textarea>
 							</p>
 							<p>
 								Metas:<br>
@@ -197,13 +181,13 @@ $dia = date("d");
 								<textarea name="Otro"></textarea>
 							</p>
 								<p>Foto de perfil:</p>
-								<input type="file" name="perfil">
+								<input type="file" name="image">
 						</div>
 						<div id="Columna">
 							<h3>Escoge un diseño</h3>
-							<img src="imagenes/Perfil1.jpg"><input type="radio" name="Diseno">
-							<img src="imagenes/Perfil2.jpg"><input type="radio" name="Diseno">
-							<img src="imagenes/Perfil3.jpg"><input type="radio" name="Diseno">
+							<img src="imagenes/Perfil1.jpg"><input type="radio" name="Diseno" checked="" value="1">
+							<img src="imagenes/Perfil2.jpg"><input type="radio" name="Diseno" value="2">
+							<img src="imagenes/Perfil3.jpg"><input type="radio" name="Diseno" value="3">
 							<h3>Paleta de colores:</h3>
 							<p><input type="radio" name="TipoP"> Blanco/Negro <br>
 							<input type="radio" name="TipoP"> Frio <br>
@@ -212,19 +196,21 @@ $dia = date("d");
 							<div id="Fila">
 								<div id="Columna2">
 									<p>Color de Bordes:</p>
-									 <input class="jscolor" value="1c83a8">
+									 <input class="jscolor" value="1c83a8" name="Bordes">
 									<p>Color Texto:</p>
-									 <input class="jscolor" value="1c83a8">
+									 <input class="jscolor" value="1c83a8" name="Texto">
 								</div>
 								<div id="Columna2">
 									<p>Color de Fondo:</p>
-									<input class="jscolor" value="1c83a8">
+									<input class="jscolor" value="1c83a8" name="Fondo">
 									<p>Color de botones:</p>
-									<input class="jscolor" value="1c83a8">
+									<input class="jscolor" value="1c83a8" name="Botones">
 								</div>
 							</div>
 						</div>
-						
+					<div class="Subir "><a class="Regresar">Regresar</a></div>
+					<input type="submit" value="Aceptar">
+					
 					</div>
 
 				</div>
@@ -238,9 +224,10 @@ $dia = date("d");
 							
 						</textarea>
 						<p>Foto de perfil:</p>
-						<input type="file" name="perfil">
+						<input type="file" name="imagen">
 						<br>
-						<input type="submit" value="Aceptar" class="Aceptar" onclick="Aceptar();">
+						<div class="Subir "><a class="Regreso">Regresar</a></div>
+						<input type="submit" value="Aceptar">
 						<br>
 			</div>
 		</form>	
@@ -249,3 +236,32 @@ $dia = date("d");
 
 </body>
 </html>
+<script type="text/javascript">
+$(document).ready(function(){
+	    	$(".Aceptar").click(function(){
+		       		validarCorreo();
+					validarContrasena();
+					validarUsuario();
+					validarTerminos();
+					validarEdad();
+					z = $("#correoV").val();
+					y = $("#contraV").val();
+					if( (v==1) && (w==1) && (x==1) && (y==1) && (z==1) ){
+						document.getElementById('Fila').style.display="none";
+								if($('input:radio[name=TipoU]:checked').val() == '1'){
+									document.getElementById('Artista').style.visibility="visible";
+								}
+								else{
+									document.getElementById('Fan').style.visibility="visible";
+								}
+						
+					}
+		    });
+		    $(".Regresar").click(function(){
+		    	document.getElementById('Fila').style.visibility="visible";
+		    	document.getElementById('Fan').style.display="none";
+		    	document.getElementById('Artista').style.display="none";
+		    });
+	
+});
+</script>

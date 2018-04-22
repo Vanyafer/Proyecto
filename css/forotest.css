@@ -31,19 +31,7 @@ a {
   color: hsl(0, 0%, 70%);
   font-weight: 300;
 }
-nav.menu a {
-  margin: 0 7px;
-  color: hsl(0, 0%, 70%);
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
-}
-nav.menu a:last-child {
-    margin: 7px 0 7px 7px;
-}
-nav.menu a.current {
-  color: hsl(0, 0%, 100%);
-}
+
 .top-msg {
   border-bottom: 5px solid hsla(0, 0%, 90%, .3);
   
@@ -208,16 +196,7 @@ a.underline:hover:after {
   display: block;
 }
 @media only screen and (max-width: 768px) {
-  header {
-    fz
-  }
-  .logo,
-  nav { 
-    text-align: center; 
-  }
-  nav.menu a {
-    margin: 7px;
-  }
+
   .breadcrumb,
   .forum-head > .column:nth-child(2),
   .forum-head > .column:nth-child(3),

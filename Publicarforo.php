@@ -10,6 +10,7 @@
 		<input type="submit" value="Cerrarforo" class="Closeforo">
 	</fieldset>
 </div>
+
 <?php
 include("conexion.php");
 session_start();
@@ -17,12 +18,16 @@ session_start();
 		$des = $_POST['des'];
 		$titulo = $_POST['titulo']
 		$usuario = $_SESSION['id_usuario'];
+		$dia = date("d");
+		$mes = date("m");
+		$ano = date("Y");
+		$fecha = $ano."-".$mes."-".$dia;
 
 		$consulta=mysqli_query($conexion,"SELECT * FROM usuario where id_usuario = $usuario");
 		$result=mysqli_fetch_array($consulta);
 		$usuario = $result['id_usuario'];
 	
-		mysqli_query($conexion,"INSERT into foro_hilo VALUES(NULL,NULL,'$des','$titulo',$tipo, $artista)");
+		mysqli_query($conexion,"INSERT into foro_hilo VALUES(NULL,'$fecha','$des','$titulo',$tipo, $artista)");
 
 		header("Location: forotest.php");
 	}

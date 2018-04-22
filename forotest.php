@@ -22,7 +22,16 @@
 </script>
 </head>
 <body>
-<?php include "BarraNavegacion.php"; ?>
+<?php include "BarraNavegacion.php";
+$consulta=mysqli_query($conexion,"SELECT * FROM foro_hilo order by id_forohilo asc");
+$result=mysqli_fetch_array($consulta);
+$hilo = $result['id_forohilo'];
+$cont = $result['contenido'];
+$fecha = $result['fecha'];
+$titulo = $result['titulo'];
+$tipo = $result['id_forotipo'];
+$usuario = $result['id_usuario'];
+ ?>
   <header id="#top">
     <div class="row">
       <div class="large-4 column lpad">
@@ -69,10 +78,10 @@
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">Title of the title</a>
+              <a href="Hilo.php">Titulo</a>
             </span>
             <span class="overflow-control">
-              Description of the title of the topic(?)
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
@@ -82,11 +91,8 @@
             <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
@@ -96,10 +102,10 @@
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">Oops.. Foundation is supposed to be responsive</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              But it's not (yet) working here
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
@@ -109,92 +115,80 @@
             <span class="center">2523</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-ellipsis-horizontal"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">text-overflow: ellipsis;</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              You can type as many things as you want but the text will be shorter than bla bla bla
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">355</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">215</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-bug"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">If you find any bugs is this pen...</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              ... please tell me in the comments :)
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">255</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">285</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-lock"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">[Locked] Some other topic</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              This topic is locked by someone
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">95</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">234</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
@@ -235,10 +229,10 @@
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">Title of the title</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              Description of the title of the topic(?)
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
@@ -248,119 +242,104 @@
             <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-tablet"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">Oops.. Foundation is supposed to be responsive</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              But it's not (yet) working here
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">25</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">2523</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-ellipsis-horizontal"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">text-overflow: ellipsis;</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              You can type as many things as you want but the text will be shorter
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">355</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">215</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-bug"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">If you find any bugs is this pen...</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              ... please tell me in the comments :)
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">255</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">285</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-lock"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">[Locked] Some other topic</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              This topic is locked by someone
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">95</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">234</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href=""#>Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
@@ -401,10 +380,10 @@
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">Title of the title</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              Description of the title of the topic(?)
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
@@ -414,119 +393,104 @@
             <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-tablet"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">Oops.. Foundation is supposed to be responsive</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              But it's not (yet) working here
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">25</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">2523</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-ellipsis-horizontal"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">text-overflow: ellipsis;</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              You can type as many things as you want but the text will be shorter
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">355</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">215</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-bug"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">If you find any bugs is this pen...</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              ... please tell me in the comments :)
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">255</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">285</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
         <div class="large-12 forum-topic">
           <div class="large-1 column lpad">
-            <i class="icon-lock"></i>
+            <i class="icon-file"></i>
           </div>
           <div class="large-7 small-8 column lpad">
             <span class="overflow-control">
-              <a href="#">[Locked] Some other topic</a>
+              <a href="#">Titulo</a>
             </span>
             <span class="overflow-control">
-              This topic is locked by someone
+              Descripcion
             </span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">95</span>
+            <span class="center">96587</span>
           </div>
           <div class="large-1 column lpad">
-            <span class="center">234</span>
+            <span class="center">678</span>
           </div>
           <div class="large-2 small-4 column pad">
-            <span>
-              <a href="#">Some sub-topic</a>
-            </span>
-            <span>08-29-2013 7:29PM</span>
-            <span>by <a href="#">Some user</a></span>
+            <span>16-04-2018 7:29PM</span>
+            <span>por <a href="#">Usuario</a></span>
           </div>
         </div>
         
@@ -534,8 +498,8 @@
     </div>
   </div>
 
-  <div class="overlay1">
-    <div class="popup1">
+  <div class="overlayforo">
+    <div class="popupforo">
       <?php include "Publicarforo.php"; ?>
     </div>
   </div>

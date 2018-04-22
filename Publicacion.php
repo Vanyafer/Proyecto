@@ -12,16 +12,34 @@ session_start();
 			$result = mysqli_fetch_array($consulta);
 			
 
+			$consulta1 = mysqli_query($conexion,"SELECT * FROM me_gusta where id_usuario = $usuarioActual and id_publicacion = $id");
+			if(mysqli_num_rows($consulta1)==1){
+				$result1=mysqli_fetch_array($consulta1);
+
+				if($result1['tipo_me_gusta']==1){
+						echo "<script> 
+							document.getElementById('1').style.color = 'pink' ;</script>";
+						
+				}else{
+					echo "<script> 
+							document.getElementById('0').style.color = 'pink' ;</script>";
+				}
+
+			}
+
 		?>
-	
+
 	<div class="Contenedor">
 		<div class="Box">
 		<img src="<?php echo  $result['imagen']; ?>">
 		<input type="hidden" name="" id="idI" value="<?php echo $id;?>">
 	</div>
 	<div class="Box1">
-			<div><textarea readonly=”readonly” ><?php echo $result['contenido']; ?></textarea></div>
-			<div><a > like </a><a>Dislike</a></div>
+			<div><textarea readonly="readonly" ><?php echo $result['contenido']; ?></textarea></div>
+			<div>
+					<a class="Like" id="1">like</a> 
+					<a class="Like" id="0">Dislike</a>
+			</div>
 			<div class="Comentarios">
 				<div>
 					<?php
@@ -40,6 +58,8 @@ session_start();
 			</div>
 	<div  class="ComentarioNuevo">
 				<form onSubmit="Enviar(); return false" id="ComentarioN">
+
+					<input type="hidden" name="idLike" id="idLike">
 					<input type="hidden" id="publicacionC" name="publicacionC" value="<?php echo $id; ?>">
 					<input type="hidden"  id="usuarioC" name="usuarioC" value="<?php echo  $usuarioActual;?>">
 					<input type="text" name="Comentario" id="Comentario">
@@ -54,3 +74,36 @@ session_start();
 
 
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".Like").click(function(){
+		     	id=$(this).attr("id");
+		     	$('#idLike').val(id);
+		    	$.ajax({
+
+		    		url:'MeGusta.php',
+		    		method:'POST',
+		    		data: $('#ComentarioN').serialize(),
+		    		 success: function(res){
+
+		    		 }	
+		    		});
+		    	
+		    		if(document.getElementById(id).style.color == 'pink'){
+
+		    			document.getElementById(id).style.color = 'black';
+		    		}else{
+		    			document.getElementById(id).style.color = 'pink';
+		    		}
+		    		if(id == 0 && document.getElementById(1).style.color == 'pink'){
+		    				document.getElementById(1).style.color = 'black';
+		    		}
+							
+		    		if(id == 1 && document.getElementById(0).style.color == 'pink'){
+		    				document.getElementById(0).style.color = 'black';
+		    		}
+		    	
+		    });
+	});
+
+</script>

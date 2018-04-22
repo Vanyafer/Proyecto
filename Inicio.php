@@ -1,5 +1,4 @@
 <?php
-$id_p=0;
 include("conexion.php");
 include 'Id_Publi.php';
 
@@ -35,22 +34,11 @@ include 'Id_Publi.php';
 		    		 }	
 		    		});
 }
-</script>
-	<script type="text/javascript">
+
 		$(document).ready(function(){
-			$.ajax({
-
-		    		url:'Comentario.php',
-		    		 success: function(res){
-		    		 	
-		    		 	$(".Comentarios").html(res);
-		    		 	$("#Comentario").val("");
-		    		 }	
-		    		});
-
+			
 	    	$("#Close").click(function(){
 		       	$(".overlay2").fadeOut(400);
-		        $(".popup2").fadeOut(400);
 		    });
 		    $(".Abrir2").click(function(){
 		    	id=$(this).attr("id");
@@ -67,9 +55,10 @@ include 'Id_Publi.php';
 		    		 	$(".Imagen").html(res);
 		    		 }	
 		    		});
-		        $(".overlay2").fadeIn(400)
-		        $(".popup2").fadeIn(400);
+		        $(".overlay2").fadeIn(400);
 		    });
+
+		   
 		});
 		</script>
 
@@ -90,15 +79,17 @@ include 'Id_Publi.php';
 											$usuario = $result2['id_usuario'];
 											$consulta2=mysqli_query($conexion,"SELECT * FROM usuario where id_usuario = $usuario");
 											$result3 = mysqli_fetch_array($consulta2);
-
+											if(isset($result1['imagen'])){
            									echo "<li><a ><img src=".$result1['imagen']." id=".$result1['id_publicacion']." class='Abrir2' name=".$result3['nombre_usuario']."></a></li>";
-													
+												
+											}else{
+												echo "<li class='Abrir2' name=".$result3['nombre_usuario']." id=".$result1['id_publicacion']."><a ><textbox  >".$result1['contenido']." </textbox></a></li>";
+												}	
 													
           								}
         						?>
 </div>
 <div class="overlay2">
-     <div >
      			<input type="hidden" id="idp" name="idp">
      		<div class="PopImagen">
      		<h1 ><a href="Perfiles.php" class="usuario"></a><samp id="Close">x</samp></h1>
@@ -110,8 +101,6 @@ include 'Id_Publi.php';
      			</div>
      		
      		</fieldset>
-     			
-		</div>
 </div>
 </div>
 </body>

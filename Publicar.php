@@ -18,13 +18,10 @@
 <?php
 include("conexion.php");
 session_start();
-	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$folder="./imgPublicacion/";
-		$tmp_name = $_FILES["image"]["tmp_name"];
-	if(!move_uploaded_file( $tmp_name,"$folder".$_FILES["image"]["name"])){
-		echo "error;";
-	}else{
 
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		
+	
 		$des = $_POST['des'];
 		if(isset($_POST['edad'])){
 			$edad = 1;
@@ -41,9 +38,15 @@ session_start();
 		$consulta=mysqli_query($conexion,"SELECT * FROM artista where id_usuario = $usuario");
 		$result=mysqli_fetch_array($consulta);
 		$artista = $result['id_artista'];
-				mysqli_query($conexion,"INSERT into publicacion VALUES(NULL,'$fecha',$edad,'$des',NULL,$tipo,'$folder".$_FILES["image"]["name"]."',$artista)");
-			
-		header("Location: Inicio.php");
-	}
+	 
+		if($_FILES["image"]["name"]==''){
+			mysqli_query($conexion,"INSERT into publicacion VALUES(NULL,'$fecha',$edad,'$des',NULL,$tipo,null,$artista)");
+		}else{
+			$folder="./imgPublicacion/";
+			$tmp_name = $_FILES["image"]["tmp_name"];
+			move_uploaded_file( $tmp_name,"$folder".$_FILES["image"]["name"]);
+			mysqli_query($conexion,"INSERT into publicacion VALUES(NULL,'$fecha',$edad,'$des',NULL,$tipo,'$folder".$_FILES["image"]["name"]."',$artista)");
+		}
+	header("location: Inicio.php");
 }
 ?>
