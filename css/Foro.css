@@ -15,7 +15,21 @@ a{
 	background-color: #bfe7ff;
 	padding: 5px;
 }
-.ListaF{
-	height: 150px;
-	overflow: auto;
+
+table{
+   width: 85%
+}
+
+.izq{
+	width: 70%;
+}
+
+.der{
+	width: 30%;
+}
+
+
+#wrapper{
+	width: 80%;
+	margin: auto;
 }
