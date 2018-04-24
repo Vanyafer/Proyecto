@@ -208,11 +208,11 @@ $dia = date("d");
 								</div>
 							</div>
 						</div>
-					<div class="Subir "><a class="Regresar">Regresar</a></div>
-					<input type="submit" value="Aceptar">
+					
 					
 					</div>
-
+					<div class="Subir Regreso"><a">Regresar</a></div>
+					<input type="submit" value="Aceptar">
 				</div>
 				<div id="Fan">
 						<p>Informacion de contacto</p>
@@ -224,9 +224,9 @@ $dia = date("d");
 							
 						</textarea>
 						<p>Foto de perfil:</p>
-						<input type="file" name="imagen">
+						<input type="file" name="image">
 						<br>
-						<div class="Subir "><a class="Regreso">Regresar</a></div>
+						<div class="Subir Regreso"><a>Regresar</a></div>
 						<input type="submit" value="Aceptar">
 						<br>
 			</div>
@@ -246,19 +246,25 @@ $(document).ready(function(){
 					validarEdad();
 					z = $("#correoV").val();
 					y = $("#contraV").val();
-					if( (v==1) && (w==1) && (x==1) && (y==1) && (z==1) ){
+					//(v==1) && (w==1) && (x==1) && (y==1) && (z==1)
+					if((v==1) && (w==1) && (x==1) && (y==1) && (z==1)){
+
+		    	document.getElementById('Fila').style.visibility="hidden";
 						document.getElementById('Fila').style.display="none";
 								if($('input:radio[name=TipoU]:checked').val() == '1'){
 									document.getElementById('Artista').style.visibility="visible";
+									document.getElementById('Artista').style.display="block";
 								}
 								else{
+									document.getElementById('Fan').style.display="block";
 									document.getElementById('Fan').style.visibility="visible";
 								}
 						
 					}
 		    });
-		    $(".Regresar").click(function(){
+		    $(".Regreso").click(function(){
 		    	document.getElementById('Fila').style.visibility="visible";
+		    	document.getElementById('Fila').style.display="block";
 		    	document.getElementById('Fan').style.display="none";
 		    	document.getElementById('Artista').style.display="none";
 		    });

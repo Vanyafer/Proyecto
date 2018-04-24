@@ -1,6 +1,5 @@
 <?php
 include("conexion.php");
-include 'Id_Publi.php';
 
 ?>
 
@@ -68,9 +67,9 @@ include 'Id_Publi.php';
 <div class="grid effect-3" id="grid">
 		<?php
 								
-								$artista = $_SESSION['artista'];
+								//$artista = $_SESSION['artista'];
 
-								$consulta = mysqli_query($conexion,"SELECT * FROM publicacion where id_artista = $artista order by id_publicacion DESC");
+								$consulta = mysqli_query($conexion,"SELECT * FROM publicacion order by id_publicacion DESC");
 
           						while ($result1 = mysqli_fetch_array($consulta)) {
           									$artista = $result1['id_artista'];
@@ -83,7 +82,7 @@ include 'Id_Publi.php';
            									echo "<li><a ><img src=".$result1['imagen']." id=".$result1['id_publicacion']." class='Abrir2' name=".$result3['nombre_usuario']."></a></li>";
 												
 											}else{
-												echo "<li class='Abrir2' name=".$result3['nombre_usuario']." id=".$result1['id_publicacion']."><a ><textbox  >".$result1['contenido']." </textbox></a></li>";
+												echo "<li class='Abrir2 texto' name=".$result3['nombre_usuario']." id=".$result1['id_publicacion']."><a ><textbox  >".$result1['contenido']." </textbox></a></li>";
 												}	
 													
           								}

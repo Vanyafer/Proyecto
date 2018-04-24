@@ -191,6 +191,7 @@ input[type="submit"] { cursor: pointer; }
     padding: 15px 40px 15px 40px;
     position:relative;
     float: right;
+    margin-right: 10px;
     font-weight: bold;
     background: #219ac6;
     border-radius: 3px;
@@ -211,4 +212,8 @@ input[type="submit"] { cursor: pointer; }
     background-color:#1c83a8;
     
     cursor: pointer;
+}
+.Regreso{
+    margin-left: 10px;
+    float: left !important;
 }

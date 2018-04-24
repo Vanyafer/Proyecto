@@ -18,11 +18,11 @@ session_start();
 
 				if($result1['tipo_me_gusta']==1){
 						echo "<script> 
-							document.getElementById('1').style.color = 'pink' ;</script>";
+							document.getElementById('1').style.color = 'blue' ;</script>";
 						
 				}else{
 					echo "<script> 
-							document.getElementById('0').style.color = 'pink' ;</script>";
+							document.getElementById('0').style.color = 'blue' ;</script>";
 				}
 
 			}
@@ -89,17 +89,17 @@ session_start();
 		    		 }	
 		    		});
 		    	
-		    		if(document.getElementById(id).style.color == 'pink'){
+		    		if(document.getElementById(id).style.color == 'blue'){
 
 		    			document.getElementById(id).style.color = 'black';
 		    		}else{
-		    			document.getElementById(id).style.color = 'pink';
+		    			document.getElementById(id).style.color = 'blue';
 		    		}
-		    		if(id == 0 && document.getElementById(1).style.color == 'pink'){
+		    		if(id == 0 && document.getElementById(1).style.color == 'blue'){
 		    				document.getElementById(1).style.color = 'black';
 		    		}
 							
-		    		if(id == 1 && document.getElementById(0).style.color == 'pink'){
+		    		if(id == 1 && document.getElementById(0).style.color == 'blue'){
 		    				document.getElementById(0).style.color = 'black';
 		    		}
 		    	
