@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Nombre de nuestra pagina</title>
-	<link rel="stylesheet" type="text/css" href="css/Diseno.css">
+	<link rel="stylesheet" type="text/css" href="Vistas/css/Diseno.css">
 	<script type="text/javascript">
 
 	function Inicio(showhide){

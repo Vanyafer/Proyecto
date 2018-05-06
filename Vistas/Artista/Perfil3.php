@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Perfil</title>
-	<link rel="stylesheet" type="text/css" href="css/Perfil3.css">
+	<link rel="stylesheet" type="text/css" href="../css/Perfil3.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>

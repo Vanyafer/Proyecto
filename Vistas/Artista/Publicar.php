@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="../css/Popup.css">
 <div class="Pop">
 	<h1>Publicar</h1>
 	<fieldset>
@@ -16,7 +17,7 @@
 </div>
 
 <?php
-include("conexion.php");
+include("../Conexion.php");
 session_start();
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){

@@ -1,5 +1,5 @@
 <?php
-include("Conexion.php");
+include("../Conexion.php");
 session_start();
 if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 
@@ -7,7 +7,7 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/BarraNavegacion.css">
+	<link rel="stylesheet" type="text/css" href="../css/BarraNavegacion.css">
 	<link rel="stylesheet" type="text/css" href="css/Popup.css">
     <link rel="stylesheet" href="css/icomoon/style.css">
     	<script src="js/jquery.min.js"></script>
@@ -26,17 +26,17 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 
 <nav class="barra">
 <ul>
-	<li><a href="Inicio.php">Inicio</a></li>
-	<li><a href="Foro.php" class="icon-bullhorn"></a></li>
+	<li><a href="../Inicio.php">Inicio</a></li>
+	<li><a href="../Foro.php" class="icon-bullhorn"></a></li>
 	<li><a id="reto" href="Reto.php" class="icon-pen"></a></li>
 	
 	<li><a href="" class="icon-newspaper"></a></li>
 	<li><a class="icon-quill Abrir " id="Publicar"></a></li>
-	<li><a href="Mensajes.php" class="icon-bubbles4"></a></li>
-	<li><a href="Perfiles.php?id_usuario=<?php echo $_SESSION['id_usuario']; ?>" class="icon-user"></a></li>
-	<li><a href="Configuracion.php" class="icon-cog"></a></li>
+	<li><a href="../Mensajes.php" class="icon-bubbles4"></a></li>
+	<li><a href="../Perfiles.php?id_usuario=<?php echo $_SESSION['id_usuario']; ?>" class="icon-user"></a></li>
+	<li><a href="../Configuracion.php" class="icon-cog"></a></li>
 
-	<li><a href="Cerrarsesion.php" class="abajo">C</a></li>
+	<li><a href="../Cerrarsesion.php" class="abajo">C</a></li>
 </ul>	
 </nav>
 <div class="overlay">

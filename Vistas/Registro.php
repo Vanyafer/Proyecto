@@ -76,7 +76,7 @@ $dia = date("d");
 				                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
 				                if(res == 0){
 
-				                    document.getElementById('valCorreo').innerHTML="Este correo ya esta registrado";
+				                    document.getElementById('valCorreo').ionnerHTML="Este correo ya esta registrado";
 				                    $("#correoV").val(0);
 
 				              } else {

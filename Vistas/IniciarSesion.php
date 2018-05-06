@@ -1,7 +1,7 @@
 <?php
-include("conexion.php");
+include("Conexion.php");
 Session_start();
-if(isset($_SESSION['Correo']))header("Location: Inicio.php");
+if(isset($_SESSION['Correo']))header("Location: Vistas/Inicio.php");
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$Correo=mysqli_real_escape_string($conexion, $_POST['Correo']);
 		$Contra=mysqli_real_escape_string($conexion, $_POST['Password']);
@@ -24,9 +24,10 @@ if(isset($_SESSION['Correo']))header("Location: Inicio.php");
 				$_SESSION['fan'] = $result['id_fan'];
 			}
 
-			header("Location: Inicio.php");
+			header("Location: Vistas/Inicio.php");
 		}else{
 			echo "error";
+			header("Location: ../Index.php");
 		}
 	}
 	mysqli_close($conexion);
