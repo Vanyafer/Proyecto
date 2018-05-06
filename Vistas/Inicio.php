@@ -82,7 +82,7 @@ include("conexion.php");
            									echo "<li><a ><img src=".$result1['imagen']." id=".$result1['id_publicacion']." class='Abrir2' name=".$result3['nombre_usuario']."></a></li>";
 												
 											}else{
-												echo "<li class='Abrir2 texto' name=".$result3['nombre_usuario']." id=".$result1['id_publicacion']."><p>".$result3['nombre_usuario']."</p><textarea readonly='readonly'>".$result1['contenido']." </textarea></li>";
+												echo "<li class='Abrir2 texto' name=".$result3['nombre_usuario']." id=".$result1['id_publicacion']."><a ><textbox  >".$result1['contenido']." </textbox></a></li>";
 												}	
 													
           								}

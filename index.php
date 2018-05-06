@@ -17,7 +17,7 @@
 <body>
 	<nav id="Barra">
 		<a href="javascript:Inicio('show');" id="Inicio">Iniciar Sesion</a>
-	    <a href="vistas\Registro.php">Registro</a>
+	    <a href="Registro.php">Registro</a>
 	</nav>
 
 	<div id="Sesion">
@@ -26,7 +26,7 @@
 
 	        <fieldset>
 
-	            <form action="vistas\IniciarSesion.php" method="POST">
+	            <form action="vistas/IniciarSesion.php" method="POST">
 
 	                <input type="email" name="Correo" value="Correo" onBlur="if(this.value=='')this.value='Correo'" onFocus="if(this.value=='Correo')this.value='' "> 
 	                <!--input type="Text" name="Usuario" value="Usuario" onBlur="if(this.value=='')this.value='Usuario'" onFocus="if(this.value=='Usuario')this.value='' "-->

@@ -46,18 +46,12 @@
 	-webkit-animation: scaleUp 0.65s ease-in-out forwards;
 	animation: scaleUp 0.65s ease-in-out forwards;
 }
- p{
-	color:  #219ac5;
-}
-.texto textarea{
+.texto{
 	
 	padding: 10px;
-	border: 2px solid #219ac5;
-	border-radius: 5px;
+	background-color: #219ac5;
 	width: 100%;
-	margin: 1px auto;
-	resize: none;
-	cursor: pointer;
+	
 
 }
 

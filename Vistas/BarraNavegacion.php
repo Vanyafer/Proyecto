@@ -31,7 +31,7 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 	<li><a id="reto" href="Reto.php" class="icon-pen"></a></li>
 	
 	<li><a href="" class="icon-newspaper"></a></li>
-	<li><a class="icon-quill Abrir " id="Publicar"></a></li>
+	<li><a class="icon-quill Abrir"></a></li>
 	<li><a href="Mensajes.php" class="icon-bubbles4"></a></li>
 	<li><a href="Perfiles.php?id_usuario=<?php echo $_SESSION['id_usuario']; ?>" class="icon-user"></a></li>
 	<li><a href="Configuracion.php" class="icon-cog"></a></li>
@@ -53,12 +53,9 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 			if($_SESSION['tipo_usuario']==1){
 				echo "<script Language='JavaScript'>
 				document.getElementById('reto').style.visibility='visible';
-					document.getElementById('Publicar').style.visibility='visible';
 				</script>";
 			}
 			if($_SESSION['tipo_usuario']==2){
-				echo "<script Language='JavaScript'>document.getElementById('reto').style.display='none';
-				document.getElementById('Publicar').style.display='none';
-				</script>";
+				echo "<script Language='JavaScript'>document.getElementById('reto').style.display='none';</script>";
 			}
 	?>

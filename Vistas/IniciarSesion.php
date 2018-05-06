@@ -24,7 +24,7 @@ if(isset($_SESSION['Correo']))header("Location: Vistas/Inicio.php");
 				$_SESSION['fan'] = $result['id_fan'];
 			}
 
-			header("Location: Vistas/Inicio.php");
+			header("Location: Inicio.php");
 		}else{
 			echo "error";
 			header("Location: ../Index.php");
