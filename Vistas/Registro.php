@@ -9,8 +9,8 @@ $dia = date("d");
 <head>
 	<title>Registro</title>
 	<link rel="stylesheet" type="text/css" href="css/Diseno.css">
-	<script src="jscolor/jscolor.js"></script>
-	<script src="js/jquery.min.js"></script>
+	<script src="../js/jscolor/jscolor.js"></script>
+	<script src="../js/jquery.min.js"></script>
 	<script type="text/javascript">
 				function validarEdad(){
 					if($("#Edad").val()!=""){
@@ -54,7 +54,7 @@ $dia = date("d");
 					$.ajax({
 					 			type:  "POST", //método de envio
 				                data: $("#formdata").serialize(), //datos que se envian a traves de ajax
-				                url:   "ValidarU.php", //archivo que recibe la peticion
+				                url:   "ValidarUsuario.php", //archivo que recibe la peticion
 				                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
 
 				                if(res == 0){
@@ -72,7 +72,7 @@ $dia = date("d");
 					 $.ajax({
 					 			type:  "POST", //método de envio
 				                data: $("#formdata").serialize(), //datos que se envian a traves de ajax
-				                url:   "Validar.php", //archivo que recibe la peticion
+				                url:   "ValidarCorreo.php", //archivo que recibe la peticion
 				                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
 				                if(res == 0){
 
@@ -96,7 +96,7 @@ $dia = date("d");
 	<div id="Datos">
 	<input type="hidden" id="correoV" >
 	<input type="hidden" name="" id="contraV">
-	 	<form  action="Insert.php" id="formdata" method="POST">
+	 	<form  action="RegistroInsert.php" id="formdata" method="POST">
 				<div id="Fila">
 					<div id="Columna">
 							<p>Nombre de usuario:</p>
@@ -185,9 +185,9 @@ $dia = date("d");
 						</div>
 						<div id="Columna">
 							<h3>Escoge un diseño</h3>
-							<img src="imagenes/Perfil1.jpg"><input type="radio" name="Diseno" checked="" value="1">
-							<img src="imagenes/Perfil2.jpg"><input type="radio" name="Diseno" value="2">
-							<img src="imagenes/Perfil3.jpg"><input type="radio" name="Diseno" value="3">
+							<img src="../imagenes/Perfiles/Perfil1.jpg"><input type="radio" name="Diseno" checked value="1">
+							<img src="../imagenes/Perfiles/Perfil2.jpg"><input type="radio" name="Diseno" value="2">
+							<img src="../imagenes/Perfiles/Perfil3.jpg"><input type="radio" name="Diseno" value="3">
 							<h3>Paleta de colores:</h3>
 							<p><input type="radio" name="TipoP"> Blanco/Negro <br>
 							<input type="radio" name="TipoP"> Frio <br>

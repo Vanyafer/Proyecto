@@ -1,9 +1,11 @@
 <?php
 include("conexion.php");
 
-
+$dia = date("d");
+					$mes = date("m");
+					$ano = date("Y");
+					$fecha = "2004-".$mes."-".$dia;
 ?>
-<!DOCTYPE html>
 <html>
 <head>
 	<title>Configuraciones</title>
@@ -28,24 +30,6 @@ include("conexion.php");
 				}
 
 }
-function validarUsuario(){
-
-	$.ajax({
-	 			type:  "POST", //método de envio
-                data: $("#formdata").serialize(), //datos que se envian a traves de ajax
-                url:   "ValidarU.php", //archivo que recibe la peticion
-                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-
-                if(res == 0){
-                    document.getElementById('valUsuario').innerHTML="Este nombre de usuario ya existe";
-              } else {
-              		document.getElementById('valUsuario').innerHTML="";
-              	
-                }
-                       
-                }
-        });
-}
 
 function Aceptar(){
 
@@ -62,7 +46,7 @@ function Aceptar(){
 	         $(".popup2").fadeOut(400);
 	    });
 	    $(".Abrir2").click(function(){
-	    		validarUsuario();
+
 	    		$(".overlay2").fadeIn(400);
 	        	$(".popup2").fadeIn(400);
 
@@ -85,23 +69,27 @@ $result=mysqli_fetch_array($consulta);
 $artista = $result['id_artista'];
 $perfil = $result['id_perfil'];
 $diseno = $result['id_diseno'];
-$consulta1=mysqli_query($conexion,"SELECT * FROM perfil where id_perfil = $perfil");
-$result1=mysqli_fetch_array($consulta1);
+$consultaPerfil=mysqli_query($conexion,"SELECT * FROM perfil where id_perfil = $perfil");
+$resultPerfil=mysqli_fetch_array($consultaPerfil);
 
-$consulta2=mysqli_query($conexion,"SELECT * FROM diseno where id_diseno = $diseno");
-$result2=mysqli_fetch_array($consulta2);
-}if($_SESSION['tipo_usuario']==2){	$consulta=mysqli_query($conexion,"SELECT * FROM fan where id_usuario = $usuario");
+$consultaDiseno=mysqli_query($conexion,"SELECT * FROM diseno where id_diseno = $diseno");
+$resultDiseno=mysqli_fetch_array($consultaDiseno);
+$resultDiseno['tipo_perfil'];
+
+}else{	
+	$consulta=mysqli_query($conexion,"SELECT * FROM fan where id_usuario = $usuario");
 	$result=mysqli_fetch_array($consulta);
 
 }
 
 ?>
 <div class="Configuracion">
-<!--form enctype="multipart/form-data" action="Contrasena.php" method="POST"-->
+<form enctype="multipart/form-data" action="Update.php" method="POST" id="Datos">
 	<div class="General">
 							<h1>Configuraciones</h1>
 							<p>Nombre de usuario:</p>
 								<input type="text" id="Usuario" value="<?php echo $nombre; ?>"></p>
+								<p id="valUsuario"></p>
 								<br>
 							<div class="Columna">
 								
@@ -128,7 +116,7 @@ $result2=mysqli_fetch_array($consulta2);
 			       				</select>
 								<br>
 								<p>Fecha de nacimiento:</p>
-								<input type="date" name="Edad" value="<?php echo $result['fn'];?>">
+								<input type="date" name="Edad" max="<?php echo $fecha; ?>" value="<?php echo $result['fn'];?>">
 								<br>
 							</div>
 			                <br>
@@ -143,19 +131,19 @@ $result2=mysqli_fetch_array($consulta2);
 							</div>
 							<div>
 								Metas:<br>
-								<textarea name="Metas"><?php echo $result1['metas']; ?></textarea>
+								<textarea name="Metas"><?php echo $resultPerfil['metas']; ?></textarea>
 							</div>
 							<div>
 								Estudios:<br>
-								<textarea name="Estudios"><?php echo $result1['estudios']; ?></textarea>
+								<textarea name="Estudios"><?php echo $resultPerfil['estudios']; ?></textarea>
 							</div>
 							<div>
 								Tiempo como Artista:<br>
-								<textarea name="Exper"><?php echo $result1['exper']; ?></textarea>
+								<textarea name="Exper"><?php echo $resultPerfil['exper']; ?></textarea>
 							</div>
 							<div>
 								Algo mas para compartir:<br>
-								<textarea name="Otro"><?php echo $result1['otro']; ?></textarea>
+								<textarea name="Otro"><?php echo $resultPerfil['otro']; ?></textarea>
 							</div>
 							<div class="Columna">
 								<p>Foto de perfil:</p>
@@ -166,28 +154,29 @@ $result2=mysqli_fetch_array($consulta2);
 								<input type="file" name="perfil">
 							</div>
 							<h3>Escoge un diseño</h3>
-							<img src="imagenes/Perfil1.jpg"><input type="radio" name="Diseno">
-							<img src="imagenes/Perfil2.jpg"><input type="radio" name="Diseno">
-							<img src="imagenes/Perfil3.jpg"><input type="radio" name="Diseno">	
+							<img src="imagenes/Perfil1.jpg"><input type="radio" name="Diseno" id="Diseno1">
+							<img src="imagenes/Perfil2.jpg"><input type="radio" name="Diseno" id="Diseno2">
+							<img src="imagenes/Perfil3.jpg"><input type="radio" name="Diseno" id="Diseno3">	
 							<h3>Paleta de colores:</h3>
-							<div><input type="radio" name="TipoP"> Blanco/Negro <br>
-							<input type="radio" name="TipoP"> Frio <br>
-							<input type="radio" name="TipoP"> Calido <br>
-							<input type="radio" name="TipoP"> Personalizado </div>	
+							<div><input type="radio" name="TipoP" value="0"> Blanco/Negro <br>
+							<input type="radio" name="TipoP" value="1"> Frio <br>
+							<input type="radio" name="TipoP" value="2"> Calido <br>
+							<input type="radio" name="TipoP" checked> Personalizado </div>	
 							<div class="Columna">
 									<p>Color de Bordes:</p>
-									 <input class="jscolor" value="<?php echo $result2['color_bordes']; ?>">
+									 <input class="jscolor" value="<?php echo $resultDiseno['color_bordes']; ?>">
 									<p>Color Texto:</p>
-									 <input class="jscolor" value="<?php echo $result2['color_titulos']; ?>">
+									 <input class="jscolor" value="<?php echo $resultDiseno['color_titulos']; ?>">
 								</div>
 								<div class="Columna">
 									<p>Color de Fondo:</p>
-									<input class="jscolor" value="<?php echo $result2['color_fondo']; ?>">
+									<input class="jscolor" value="<?php echo $resultDiseno['color_fondo']; ?>">
 									<p>Color de botones:</p>
-									<input class="jscolor" value="<?php echo $result2['color_botones']; ?>">
+									<input class="jscolor" value="<?php echo $resultDiseno['color_botones']; ?>">
 
 								</div>		
 
+						<input type="submit" name="Aceptar" value="Aceptar">
 						<a class="Abrir2 boton">Aceptar</a>
 	</div>
 	<div class="Fan" id="Fan">
@@ -199,27 +188,54 @@ $result2=mysqli_fetch_array($consulta2);
 						<p>Foto de perfil:</p>
 						<input type="file" name="perfil">
 						<br>
-						<input type="submit" name="subir" value="Aceptar">
-						
+						<input type="submit" name="Aceptar" value="Aceptar">
+						<a class="Abrir2 boton">Aceptar</a>
 	</div>
-	<div class="overlay2">
+	
+</form>
+</div>	
+<!--div class="overlay2">
 		<div class="popup2">
 				<div class="Pop">
 					<h1>Confirmar contraseña actual</h1>
 					<fieldset>
 							<input type="password" name="submit" value="contrasena">
 							<input type="submit" name="Aceptar" value="Subir">
-						</form>
+						
 						<input type="submit" value="Cerrar" class="Close">
 					</fieldset>
 				</div>
 		
 		</div>
-	</div>
-
-</div>	
+	</div-->
 </body>
 </html>
+<script type="text/javascript">
+	$(document).ready(function(){
+			
+	    	$("#Usuario").change(function(){
+  
+				alert("Hola");
+				$.ajax({
+				 			type:  "POST", //método de envio
+			                data: $("#Datos").serialize(), //datos que se envian a traves de ajax
+			                url:   "ValidarUsuario.php", //archivo que recibe la peticion
+			                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+			                alert(res);
+			                if(res == 0){
+			                    document.getElementById('valUsuario').innerHTML="Este nombre de usuario ya existe";
+			              } else {
+			              		document.getElementById('valUsuario').innerHTML="";
+			              	
+			                }
+			                       
+			                }
+			        });
+		   
+		});
+		$('#Diseno<?php echo $resultDiseno['tipo_perfil'];?>').attr('checked', true);
+});
+</script>
 	<?php
 			if($_SESSION['tipo_usuario']==1){
 				echo "<script Language='JavaScript'>
