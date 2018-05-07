@@ -19,20 +19,7 @@ include("conexion.php");
 	<script src="js/classie.js"></script>
 	<script src="js/AnimOnScroll.js"></script>
 	<script type="text/javascript">
-	function Enviar(){
-		
-			$.ajax({
 
-		    		url:'Comentario.php',
-		    		method:'POST',
-		    		data: $("#ComentarioN").serialize(),
-		    		 success: function(res){
-		    		 	
-		    		 	$(".Comentarios").html(res);
-		    		 	$("#Comentario").val("");
-		    		 }	
-		    		});
-}
 
 		$(document).ready(function(){
 			
@@ -41,9 +28,14 @@ include("conexion.php");
 		    });
 		    $(".Abrir2").click(function(){
 		    	id=$(this).attr("id");
-		    	usuario = $(this).attr("name");
 
 		    	$("#idp").val(id);
+
+		    	usuario = $(this).attr("idu");
+		    	direccion = "Perfiles.php?id_usuario="+usuario;
+		    	$("#idp").val(id);
+		    	$(".usuario").attr("href",direccion);
+		    	usuario = $(this).attr("name");
 		    	$(".usuario").html(usuario);
 		    	$.ajax({
 
@@ -75,14 +67,14 @@ include("conexion.php");
           									$artista = $result1['id_artista'];
 											$consulta1=mysqli_query($conexion,"SELECT * FROM artista where id_artista = $artista");
 											$result2 = mysqli_fetch_array($consulta1);
-											$usuario = $result2['id_usuario'];
-											$consulta2=mysqli_query($conexion,"SELECT * FROM usuario where id_usuario = $usuario");
+											$id_usuario = $result2['id_usuario'];
+											$consulta2=mysqli_query($conexion,"SELECT * FROM usuario where id_usuario = $id_usuario");
 											$result3 = mysqli_fetch_array($consulta2);
 											if(isset($result1['imagen'])){
-           									echo "<li><a ><img src=".$result1['imagen']." id=".$result1['id_publicacion']." class='Abrir2' name=".$result3['nombre_usuario']."></a></li>";
+           									echo "<li><a ><img src=".$result1['imagen']." id=".$result1['id_publicacion']." class='Abrir2' name=".$result3['nombre_usuario']." idu=".$id_usuario."></a></li>";
 												
 											}else{
-												echo "<li class='Abrir2 texto' name=".$result3['nombre_usuario']." id=".$result1['id_publicacion']."><a ><textbox  >".$result1['contenido']." </textbox></a></li>";
+												echo "<li class='Abrir2 texto' name=".$result3['nombre_usuario']." id=".$result1['id_publicacion']." idu=".$id_usuario."><a ><textbox  >".$result1['contenido']. " </textbox></a></li>";
 												}	
 													
           								}

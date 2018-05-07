@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include("Conexion.php");
 
 
 ?>
@@ -79,18 +79,20 @@ $usuario = $_SESSION['id_usuario'];
 $consulta=mysqli_query($conexion,"SELECT * FROM usuario where id_usuario = $usuario");
 $result=mysqli_fetch_array($consulta);
 $nombre = $result['nombre_usuario'];
+$contrasena = $result['contrasena'];
 if($_SESSION['tipo_usuario']==1){
-	$consulta=mysqli_query($conexion,"SELECT * FROM artista where id_usuario = $usuario");
-$result=mysqli_fetch_array($consulta);
-$artista = $result['id_artista'];
-$perfil = $result['id_perfil'];
-$diseno = $result['id_diseno'];
-$consulta1=mysqli_query($conexion,"SELECT * FROM perfil where id_perfil = $perfil");
-$result1=mysqli_fetch_array($consulta1);
+	$consultaArtista=mysqli_query($conexion,"SELECT * FROM artista where id_usuario = $usuario");
+$resultArtista=mysqli_fetch_array($consultaArtista);
+$artista = $resultArtista['id_artista'];
+$perfil = $resultArtista['id_perfil'];
+$diseno = $resultArtista['id_diseno'];
+$consultaPerfil=mysqli_query($conexion,"SELECT * FROM perfil where id_perfil = $perfil");
+$resultPerfil=mysqli_fetch_array($consultaPerfil);
 
-$consulta2=mysqli_query($conexion,"SELECT * FROM diseno where id_diseno = $diseno");
-$result2=mysqli_fetch_array($consulta2);
-}if($_SESSION['tipo_usuario']==2){	$consulta=mysqli_query($conexion,"SELECT * FROM fan where id_usuario = $usuario");
+$consultaDiseno=mysqli_query($conexion,"SELECT * FROM diseno where id_diseno = $diseno");
+$resultDiseno=mysqli_fetch_array($consultaDiseno);
+}if($_SESSION['tipo_usuario']==2){	
+	$consulta=mysqli_query($conexion,"SELECT * FROM fan where id_usuario = $usuario");
 	$result=mysqli_fetch_array($consulta);
 
 }
@@ -107,11 +109,11 @@ $result2=mysqli_fetch_array($consulta2);
 								
 			                	<br>
 			                	<p>Contrasena:</p>
-			                	<input type="password" id="Contrasena" value="<?php echo $nombre; ?>">
+			                	<input type="password" id="Contrasena" value="<?php echo $contrasena; ?>">
 			                	<p id="Contra"></p>
 			                	<br>
 			                	<p>Confirme contrasena:</p>
-				                <input type="password" id="Contrasena1" value="contrasena" >
+				                <input type="password" id="Contrasena1" value="<?php echo $contrasena; ?>" >
 				                <p id="Con"></p>
 							</div>
 							<div class="Columna">
@@ -128,7 +130,7 @@ $result2=mysqli_fetch_array($consulta2);
 			       				</select>
 								<br>
 								<p>Fecha de nacimiento:</p>
-								<input type="date" name="Edad" value="<?php echo $result['fn'];?>">
+								<input type="date" name="Edad" value="<?php echo $resultArtista['fn'];?>">
 								<br>
 							</div>
 			                <br>
@@ -139,23 +141,23 @@ $result2=mysqli_fetch_array($consulta2);
 							<h1>Editar Perfil</h1>
 							<div>
 								Tecnica de interes:<br>
-								<textarea name="Tecnica"><?php echo $result['tecnica_interes'];?></textarea>
+								<textarea name="Tecnica"><?php echo $resultArtista['tecnica_interes'];?></textarea>
 							</div>
 							<div>
 								Metas:<br>
-								<textarea name="Metas"><?php echo $result1['metas']; ?></textarea>
+								<textarea name="Metas"><?php echo $resultPerfil['metas']; ?></textarea>
 							</div>
 							<div>
 								Estudios:<br>
-								<textarea name="Estudios"><?php echo $result1['estudios']; ?></textarea>
+								<textarea name="Estudios"><?php echo $resultPerfil['estudios']; ?></textarea>
 							</div>
 							<div>
 								Tiempo como Artista:<br>
-								<textarea name="Exper"><?php echo $result1['exper']; ?></textarea>
+								<textarea name="Exper"><?php echo $resultPerfil['exper']; ?></textarea>
 							</div>
 							<div>
 								Algo mas para compartir:<br>
-								<textarea name="Otro"><?php echo $result1['otro']; ?></textarea>
+								<textarea name="Otro"><?php echo $resultPerfil['otro']; ?></textarea>
 							</div>
 							<div class="Columna">
 								<p>Foto de perfil:</p>
@@ -176,15 +178,15 @@ $result2=mysqli_fetch_array($consulta2);
 							<input type="radio" name="TipoP"> Personalizado </div>	
 							<div class="Columna">
 									<p>Color de Bordes:</p>
-									 <input class="jscolor" value="<?php echo $result2['color_bordes']; ?>">
+									 <input class="jscolor" value="<?php echo $resultDiseno['color_bordes']; ?>">
 									<p>Color Texto:</p>
-									 <input class="jscolor" value="<?php echo $result2['color_titulos']; ?>">
+									 <input class="jscolor" value="<?php echo $resultDiseno['color_titulos']; ?>">
 								</div>
 								<div class="Columna">
 									<p>Color de Fondo:</p>
-									<input class="jscolor" value="<?php echo $result2['color_fondo']; ?>">
+									<input class="jscolor" value="<?php echo $resultDiseno['color_fondo']; ?>">
 									<p>Color de botones:</p>
-									<input class="jscolor" value="<?php echo $result2['color_botones']; ?>">
+									<input class="jscolor" value="<?php echo $resultDiseno['color_botones']; ?>">
 
 								</div>		
 
@@ -220,6 +222,32 @@ $result2=mysqli_fetch_array($consulta2);
 </div>	
 </body>
 </html>
+<script type="text/javascript">
+	$(document).ready(function(){
+			
+	    	$("#Usuario").change(function(){
+  
+				alert("Hola");
+				$.ajax({
+				 			type:  "POST", //método de envio
+			                data: $("#Datos").serialize(), //datos que se envian a traves de ajax
+			                url:   "ValidarUsuario.php", //archivo que recibe la peticion
+			                success: function(res) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+			                alert(res);
+			                if(res == 0){
+			                    document.getElementById('valUsuario').innerHTML="Este nombre de usuario ya existe";
+			              } else {
+			              		document.getElementById('valUsuario').innerHTML="";
+			              	
+			                }
+			                       
+			                }
+			        });
+		   
+		});
+		$('#Diseno<?php echo $resultDiseno['tipo_perfil'];?>').attr('checked', true);
+});
++</script>
 	<?php
 			if($_SESSION['tipo_usuario']==1){
 				echo "<script Language='JavaScript'>

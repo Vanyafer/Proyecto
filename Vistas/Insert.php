@@ -1,5 +1,5 @@
 <?php 
-include "conexion.php";
+include "Conexion.php";
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
 session_start();
@@ -52,7 +52,7 @@ if($Tipo == '1'){
     $resultPerfil=mysqli_fetch_array($consultaPerfil);
     $id_perfil = $resultPerfil['id'];
 
-    mysqli_query($conexion,"INSERT into artista VALUES(NULL,$Edad,'$foto','$informacion','$tecnica',$Pais,$id,$id_diseno,$id_portafolio,$id_perfil)");
+    mysqli_query($conexion,"INSERT into artista VALUES(NULL,$Edad,'$foto','$InformacionA','$TecnicaS',$Pais,$id,$id_diseno,$id_portafolio,$id_perfil)");
     $consultaArtista=mysqli_query($conexion,"SELECT MAX(id_perfil) as id FROM artista");
     $resultArtista=mysqli_fetch_array($consultaArtista);
      $_SESSION['artista'] = $resultArtista['id_artista'];
@@ -60,7 +60,7 @@ if($Tipo == '1'){
    
     $DatosFan = $_POST['DatosFan'];
     $Perfil = $_POST['Perfil'];
-    mysqli_query($conexion,"INSERT into fan VALUES(NULL,$Edad,'$foto','$DatosFan','$Perfil',$Pais,$id)");
+    mysqli_query($conexion,"INSERT into fan VALUES(NULL,$Edad,'$foto','$DatosFan','$PerfilFan',$Pais,$id)");
     $consultaFan=mysqli_query($conexion,"SELECT MAX(id_perfil) as id FROM fan");
     $resultFan=mysqli_fetch_array($consultaFan);
     $_SESSION['fan'] = $resultFan['id_fan'];

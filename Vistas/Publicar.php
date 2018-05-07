@@ -17,11 +17,10 @@
 </div>
 
 <?php
-include("../Conexion.php");
-session_start();
+include("Conexion.php");
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
-		
+		session_start();
 	
 		$des = $_POST['des'];
 		if(isset($_POST['edad'])){
@@ -43,11 +42,10 @@ session_start();
 		if($_FILES["image"]["name"]==''){
 			mysqli_query($conexion,"INSERT into publicacion VALUES(NULL,'$fecha',$edad,'$des',NULL,$tipo,null,$artista)");
 		}else{
-			$folder="./imgPublicacion/";
+			$folder="./Imagenes/imgPublicacion/";
 			$tmp_name = $_FILES["image"]["tmp_name"];
 			move_uploaded_file( $tmp_name,"$folder".$_FILES["image"]["name"]);
 			mysqli_query($conexion,"INSERT into publicacion VALUES(NULL,'$fecha',$edad,'$des',NULL,$tipo,'$folder".$_FILES["image"]["name"]."',$artista)");
 		}
-	header("location: Inicio.php");
 }
 ?>

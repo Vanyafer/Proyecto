@@ -13,11 +13,11 @@ $consultaDiseno=mysqli_query($conexion,"SELECT * FROM diseno where id_diseno = $
 $resultDiseno=mysqli_fetch_array($consultaDiseno);
 $diseno = $resultDiseno['tipo_perfil'];
 
-				header("Location: Artista/Perfil".$diseno.".php?id_usuario=$id_usuario");
+				header("Location: Perfil".$diseno.".php?id_usuario=$id_usuario");
 			}
 
 			
 			if($result['tipo_usuario']==2){
-				header("Location: Fan/PerfilInvitado.php?usuario=$usuario");
+				header("Location: PerfilInvitado.php?id_usuario=$id_usuario");
 			}
 ?>

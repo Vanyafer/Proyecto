@@ -17,7 +17,7 @@
 <body>
 	<nav id="Barra">
 		<a href="javascript:Inicio('show');" id="Inicio">Iniciar Sesion</a>
-	    <a href="Registro.php">Registro</a>
+	    <a href="vistas/Registro.php">Registro</a>
 	</nav>
 
 	<div id="Sesion">
