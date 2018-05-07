@@ -47,5 +47,6 @@ include("Conexion.php");
 			move_uploaded_file( $tmp_name,"$folder".$_FILES["image"]["name"]);
 			mysqli_query($conexion,"INSERT into publicacion VALUES(NULL,'$fecha',$edad,'$des',NULL,$tipo,'$folder".$_FILES["image"]["name"]."',$artista)");
 		}
+		header("location: Inicio.php");
 }
 ?>

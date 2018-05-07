@@ -9,7 +9,15 @@ include("conexion.php");
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<?php include "BarraNavegacion.php"; ?>
+<?php include "BarraNavegacion.php"; 
+$id_usuario = $_GET['id_usuario'];
+
+$consultaDatos=mysqli_query($conexion,"SELECT * FROM usuario where id_usuario = $id_usuario");
+$resultDatos=mysqli_fetch_array($consultaDatos);
+$nombre = $resultDatos['nombre_usuario'];
+
+
+?>
 <div class="Perfil">
 	<div class="Imagen">
 		<div class="Foto derecha">Hola</div>
@@ -18,9 +26,13 @@ include("conexion.php");
 		<div>
 			<div class="Nombre">Nombre</div>
 			<div class="Opciones">
-					<a href="">Seguir</a>
-					<a href="">Amigos</a>
+					<a href="">Portafolio</a>
+					<a href="Seguir.php?id_usuario=<?php echo $id_usuario ?>" id="Seguir">Seguir</a>
+					<a href="Amigos.php?id_usuario=<?php echo $id_usuario ?>" id="Amigo">Agregar Amigo</a>
+					<a href="">Enviar mensaje</a>
+					
 					<a href="Mensajes.php">Enviar mensaje</a>
+					<a href="reportarusuario.php?id=<?php echo $id_usuario ?>">Reportar Usuario</a>
 				
 			</div>
 		</div>
@@ -32,6 +44,6 @@ include("conexion.php");
 	</div>
 </div>
 <div class="Portafolio"><a href="Portafolio.php">Portafolio</a></div>
-
+<?php include "ConfiguracionPerfil.php"; ?>
 </body>
 </html>
