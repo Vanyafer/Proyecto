@@ -10,13 +10,13 @@ $result = mysqli_fetch_array($consulta);
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/Foro.css">
 </head>
 <body>
-	<div>
+	<div class="Foros">
 		<h1>Está reportando la publicación:</h1>
 		<p><?php echo "<img src=".$result['imagen'].">"; ?></p>
 		<p></p>
-	</div>
 	<h3>Razón:</h3>
 	<?php  
 	echo '<form action="reportarpublicacion.php?id='.$idreporpub.'" method="POST">';
@@ -32,6 +32,7 @@ $result = mysqli_fetch_array($consulta);
 		<p></p>
 		<input type="submit" name="Reportar" value="Reportar">
 	</form>
+	</div>
 </body>
 </html>
 

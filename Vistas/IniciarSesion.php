@@ -17,14 +17,19 @@ if(isset($_SESSION['Correo']))header("Location: Vistas/Inicio.php");
 				$consulta=mysqli_query($conexion,"SELECT * FROM artista where id_usuario = $usuario");
 				$result=mysqli_fetch_array($consulta);
 				$_SESSION['artista'] = $result['id_artista'];
-			}else{
+				header("Location: Inicio.php");
+			}
+			if($_SESSION['tipo_usuario']==2){
 				$usuario = $result['id_usuario'];
 				$consulta=mysqli_query($conexion,"SELECT * FROM fan where id_usuario = $usuario");
 				$result=mysqli_fetch_array($consulta);
 				$_SESSION['fan'] = $result['id_fan'];
+				header("Location: Inicio.php");
 			}
-
-			header("Location: Inicio.php");
+			if($_SESSION['tipo_usuario']==3){
+				$usuario = $result['id_usuario'];
+				header("Location: Moderador.php");
+			}
 		}else{
 			echo "error";
 			header("Location: ../Index.php");

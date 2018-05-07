@@ -10,13 +10,13 @@ $result = mysqli_fetch_array($consulta);
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/Foro.css">
 </head>
 <body>
-	<div>
+	<div class="Foros">
 		<h1>Está reportando al usuario:</h1>
 		<p><?php echo "<p>".$result['nombre_usuario']."</p>"; ?></p>
 		<p></p>
-	</div>
 	<h3>Razón:</h3>
 	<?php  
 	echo '<form action="reportarusuario.php?id='.$idreporusu.'" method="POST">';
@@ -27,6 +27,7 @@ $result = mysqli_fetch_array($consulta);
 		<p></p>
 		<input type="submit" name="Reportar" value="Reportar">
 	</form>
+	</div>
 </body>
 </html>
 
