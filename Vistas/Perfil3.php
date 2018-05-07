@@ -38,6 +38,7 @@ $nombre = $resultDatos['nombre_usuario'];
 					<a href="Seguir.php?id_usuario=<?php echo $id_usuario ?>" id="Seguir">Seguir</a>
 					<a href="Amigos.php?id_usuario=<?php echo $id_usuario ?>" id="Amigo">Agregar Amigo</a>
 					<a href="">Enviar mensaje</a>
+					<a href="reportarusuario.php?id=<?php echo $id_usuario ?>">Reportar Usuario</a>
 				
 			</div>
 </div>

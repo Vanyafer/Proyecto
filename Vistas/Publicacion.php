@@ -49,10 +49,11 @@ session_start();
 							$consultaUsuario=mysqli_query($conexion,"SELECT * FROM usuario where id_usuario = $id_usuario");
 								$resultUsuario = mysqli_fetch_array($consultaUsuario);
 
-							echo "<div class='Comentario'><a href='' class='usuarioComentario' id=".$id_usuario.">".$resultUsuario['nombre_usuario']."</a><div class='contenido'>".$resultCoemtario['contenido']."</div><div class='fecha'>".$resultCoemtario['fecha']."</div></div>";
+							echo "<div class='Comentario'><a href='' class='usuarioComentario' id=".$id_usuario.">".$resultUsuario['nombre_usuario']."</a><div class='contenido'>".$resultCoemtario['contenido']."</div><div class='fecha'>".$resultCoemtario['fecha']."</div><a href='reportarcomentario.php?id=".$resultCoemtario['id_comentario']."'>Reportar</a></div>";
 						}
 
 					?>
+
 				</div>
 				
 			</div>
@@ -66,6 +67,13 @@ session_start();
 					<input type="submit" name="" value=">" >
 			</form>
 			</div>
+
+	<div>
+		<?php  
+			echo '<a href="reportarpublicacion.php?id='.$id.'">Reportar publicación</p>';
+		?>
+		
+	</div>
 			
 			
 	</div>
