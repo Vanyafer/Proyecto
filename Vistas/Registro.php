@@ -34,12 +34,12 @@ $dia = date("d");
 					var Contrasena = document.getElementById("Contrasena").value;
 								var Contrasena1 = document.getElementById("Contrasena1").value;
 								if(Contrasena.length < 8 || Contrasena.match(/[A-Z]/) == null || Contrasena.match(/[0-9]/) == null){
-									document.getElementById('valContra').innerHTML="*La contrase;a debe de tener minimo 8 carateres, un numero y una mayuscula";
+									document.getElementById('valContra').innerHTML="*La contraseña debe de tener minimo 8 carateres, un número y una mayúscula";
 									x=0
 								}else{
 									document.getElementById('valContra').innerHTML="";
 									if(Contrasena1 != Contrasena){
-										document.getElementById('valCon').innerHTML='*Las contrasenas no coinciden';
+										document.getElementById('valCon').innerHTML='*Las contraseñas no coinciden';
 										x=0;
 
 									}else{

@@ -38,6 +38,7 @@ if(!isset($_SESSION['id_usuario']))header("Location: index.php");
 	<li><a href="" class="icon-newspaper"></a></li>
 	<li><a class="icon-quill Abrir"></a></li>
 	<li><a href="Mensajes.php" class="icon-bubbles4"></a></li>
+	<li><a href="UsuariosRecomendados.php">U</a></li>
 	<li><a href="Perfiles.php?id_usuario=<?php echo $_SESSION['id_usuario']; ?>" class="icon-user"></a></li>
 	<li><a href="Configuracion.php" class="icon-cog"></a></li>
 
