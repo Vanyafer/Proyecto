@@ -75,3 +75,11 @@ table{
 textarea{
 	resize: none;
 }
+
+
+.Medio{
+	margin: 20px auto;
+    width: 40%;
+    border: 2px solid #ccc;
+    position: relative;
+}

@@ -52,7 +52,7 @@ if($Tipo == '1'){
     $resultPerfil=mysqli_fetch_array($consultaPerfil);
     $id_perfil = $resultPerfil['id'];
 
-    mysqli_query($conexion,"INSERT into artista VALUES(NULL,$Edad,'$foto','$InformacionA','$TecnicaS',$Pais,$id,$id_diseno,$id_portafolio,$id_perfil)");
+    mysqli_query($conexion,"INSERT into artista VALUES(NULL,$Edad,'$foto','$informacion','$tecnica',$Pais,$id,$id_diseno,$id_portafolio,$id_perfil)");
     $consultaArtista=mysqli_query($conexion,"SELECT MAX(id_perfil) as id FROM artista");
     $resultArtista=mysqli_fetch_array($consultaArtista);
      $_SESSION['artista'] = $resultArtista['id_artista'];

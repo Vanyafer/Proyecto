@@ -38,7 +38,7 @@ echo '<div class="Foros">
                		echo '<h3>'.$result4['nombre_usuario'].'</h3>';
             	echo "</td>";
            		echo '<td class="der">';
-                	echo '<h3>'.$result1['imagen'].'</h3>';
+                	echo '<img src="'.$result1['imagen'].'">';
             	echo "</td>";
               echo '<td class="der">';
                   echo '<h3>'.$result3['nombre_usuario'].'</h3>';
