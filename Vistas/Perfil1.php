@@ -24,7 +24,7 @@ $nombre = $resultDatos['nombre_usuario'];
 	</div>
 	<div class="Datos">
 		<div>
-			<div class="Nombre">Nombre</div>
+			<div class="Nombre"><?php echo $nombre; ?></div>
 			<div class="Opciones">
 					<a href="">Portafolio</a>
 					<a href="Seguir.php?id_usuario=<?php echo $id_usuario ?>" id="Seguir">Seguir</a>

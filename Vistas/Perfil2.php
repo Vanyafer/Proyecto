@@ -37,7 +37,7 @@ $nombre = $resultDatos['nombre_usuario'];
 		</div>
 	</div>
 
-<div class="Nombre">Nombre<hr></div>
+<div class="Nombre"><?php echo $nombre; ?><hr></div>
 
 </div>
 <?php include "ConfiguracionPerfil.php"; ?>

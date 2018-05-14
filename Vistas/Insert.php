@@ -59,8 +59,8 @@ if($Tipo == '1'){
   }else{
    
     $DatosFan = $_POST['DatosFan'];
-    $Perfil = $_POST['Perfil'];
-    mysqli_query($conexion,"INSERT into fan VALUES(NULL,$Edad,'$foto','$DatosFan','$PerfilFan',$Pais,$id)");
+    $Perfil = $_POST['PerfilFan'];
+    mysqli_query($conexion,"INSERT into fan VALUES(NULL,$Edad,'$foto','$DatosFan','$Perfil',$Pais,$id)");
     $consultaFan=mysqli_query($conexion,"SELECT MAX(id_perfil) as id FROM fan");
     $resultFan=mysqli_fetch_array($consultaFan);
     $_SESSION['fan'] = $resultFan['id_fan'];

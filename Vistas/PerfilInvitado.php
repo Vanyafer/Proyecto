@@ -25,6 +25,8 @@ $consulta=mysqli_query($conexion,"SELECT * FROM fan where id_usuario = $id_usuar
 		<div class="Box">
 			<div class="Foto"><img src="<?php echo $result['imagen_perfil'] ?>"></div>
 			<div class="mensaje"><a href="Mensajes.php">Enviar mensaje</a></div>
+			<a href="reportarusuario.php?id=<?php echo $id_usuario ?>">Reportar Usuario</a>
+				
 		</div>
 		
 		

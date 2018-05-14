@@ -49,7 +49,7 @@ session_start();
 							$consultaUsuario=mysqli_query($conexion,"SELECT * FROM usuario where id_usuario = $id_usuario");
 								$resultUsuario = mysqli_fetch_array($consultaUsuario);
 
-							echo "<div class='Comentario'><a href='Perfiles.php?id_usuario=".$id_usuario."'>".$resultUsuario['nombre_usuario']."</a><div class='contenido'>".$resultCoemtario['contenido']."</div><div class='fecha'>".$resultCoemtario['fecha']."</div><a href='reportarcomentario.php?id=".$resultCoemtario['id_comentario']."'>Reportar</a></div>";
+							echo "<div class='Comentario'><a href='Perfiles.php?id_usuario=".$id_usuario."'>".$resultUsuario['nombre_usuario']."</a><div class='contenido'>".$resultCoemtario['contenido']."</div><div class='fecha'>".$resultCoemtario['fecha']."</div><a href='ReportarComentario.php?id=".$resultCoemtario['id_comentario']."'>Reportar</a></div>";
 						}
 
 					?>
